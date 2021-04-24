@@ -1,0 +1,115 @@
+En pocas palabras: si queremos añadir nuevo código, lo ideal sería poder construir sobre lo que ya existe, sin tener que hacer modificaciones grandes.
+
+	public class Rectangle{
+
+		public double Height {get;set;}
+
+		public double Wight {get;set; }
+
+	}
+
+Nuestra aplicación necesita la capacidad de calcular el área total de una colección de rectángulos.
+Nos creamos otra clase para el cálculo del área.
+
+	public class AreaCalculator 
+	{   
+	   public double TotalArea(Rectangle[] arrRectangles)  
+	   {   
+		  double area;   
+
+		  foreach(var objRectangle in arrRectangles)  
+		  {   
+			 area += objRectangle.Height * objRectangle.Width;  
+		  }   
+		  return area;   
+	   }   
+	}
+
+¿Podemos ampliar nuestra aplicación para que pueda calcular el área no solo de los rectángulos, sino también el área de los círculos?
+Podemos cambiar un poco el método TotalArea, de modo que pueda aceptar una matriz de objetos como un argumento.
+Verificamos el tipo de objeto en el bucle y hacemos el cálculo del área en función del tipo de objeto.
+
+	public class Rectangle
+	{   
+	   public double Height {get;set;}   
+	   public double Wight {get;set; }   
+	}   
+	public class Circle
+	{   
+	   public double Radius {get;set;}   
+	}   
+	public class AreaCalculator   
+	{   
+	   public double TotalArea(object[] arrObjects)   
+	   {   
+		  double area = 0;   
+		  Rectangle objRectangle;   
+		  Circle objCircle;   
+		  foreach(var obj in arrObjects)   
+		  {   
+			 if(obj is Rectangle)   
+			 {    
+				area += obj.Height * obj.Width;   
+			 }   
+			 else   
+			 {   
+				objCircle = (Circle)obj;   
+				area += objCircle.Radius * objCircle.Radius * Math.PI;   
+			 }   
+		  }   
+		  return area;   
+	   }   
+	}
+
+Hemos terminado con el cambio. Aquí hemos introducido con éxito Circle en nuestra aplicación.
+Podemos agregar un Triángulo y calcular su área agregando un bloque más "if" en el método TotalArea de AreaCalculator.
+Pero cada vez que introducimos una nueva forma necesitamos alterar el método TotalArea.
+Así que la clase AreaCalculator no está cerrada por modificación.
+¿Cómo podemos hacer nuestro diseño para evitar esta situación?
+Generalmente, podemos hacer esto refiriéndonos a las abstracciones para dependencias, como interfaces o clases abstractas, en lugar de usar clases concretas.
+
+	public abstract class Shape
+	{
+
+		public abstract double Area();
+
+	}
+
+Heredando de Shape, las clases Rectangle y Circle ahora se ven así:
+
+	public class Rectangle: Shape   
+	{   
+	   public double Height {get;set;}   
+	   public double Width {get;set;}   
+	   public override double Area()   
+	   {   
+		  return Height * Width;   
+	   }   
+	}   
+	public class Circle: Shape   
+	{   
+		public double Radius {get;set;}   
+		public override double Area()   
+		{   
+			return Radius * Radus * Math.PI;   
+		}   
+	}
+
+Cada forma contiene su área con su propia forma de funcionalidad de cálculo y nuestra clase AreaCalculator será más simple que antes.
+
+	public class AreaCalculator   
+	{   
+	   public double TotalArea(Shape[] arrShapes)   
+	   {   
+		  double area=0;   
+		  foreach(var objShape in arrShapes) 
+		  {   
+			 area += objShape.Area();          
+		  }   
+		  return area;   
+		}   
+	}
+
+Ahora nuestro código sigue a SRP y OCP.
+
+Siempre que introduzca una nueva forma derivando de la clase abstracta "Shape", no necesita cambiar la clase "AreaCalculator".

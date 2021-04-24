@@ -16,5 +16,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+    <None Include="ListaLigadaDoble.java" />
+    <None Include="Node.java" />
+    <None Include="ListaGenerica.java" />
+    <None Include="Pareja.java" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="3.SOLID_PatronesDisenho\AbstractFactory.gif">
+      <Filter>Archivos de recursos</Filter>
+    </Image>
+    <Image Include="2.EstructurasDatos\BigO.png">
+      <Filter>Archivos de recursos</Filter>
+    </Image>
+    <Image Include="2.EstructurasDatos\Big_O.jpg">
+      <Filter>Archivos de recursos</Filter>
+    </Image>
+    <Image Include="3.SOLID_PatronesDisenho\Builder.gif">
+      <Filter>Archivos de recursos</Filter>
+    </Image>
+    <Image Include="3.SOLID_PatronesDisenho\Factory.gif">
+      <Filter>Archivos de recursos</Filter>
+    </Image>
+    <Image Include="3.SOLID_PatronesDisenho\Prototype.gif">
+      <Filter>Archivos de recursos</Filter>
+    </Image>
+    <Image Include="3.SOLID_PatronesDisenho\patronesCreacionales\Singleton.gif">
+      <Filter>Archivos de recursos</Filter>
+    </Image>
   </ItemGroup>
 </Project>

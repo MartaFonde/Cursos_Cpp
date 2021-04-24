@@ -1,0 +1,116 @@
+Ejemplo que rompe ISP.
+
+Supongamos que necesitamos construir un sistema para una empresa de IT que tenga roles como TeamLead y Programmer, 
+donde TeamLead divide una tarea enorme en tareas más pequeñas y las asigna a sus programadores o puede trabajar directamente en ellas.
+Según las especificaciones, necesitamos crear una interfaz y una clase TeamLead para implementarla.
+
+	public Interface ILead
+	{
+		void CreateSubTask();
+		void AssginTask();
+		void WorkOnTask();
+	}
+	public class TeamLead : ILead
+	{
+		public void AssignTask()
+		{
+			//Code to assign a task.
+		}
+		public void CreateSubTask()
+		{
+			//Code to create a sub task
+		}
+		public void WorkOnTask()
+		{
+			//Code to implement perform assigned task.
+		}
+	}
+
+El diseño se ve bien por ahora.
+Posteriormente, se introduce en el sistema otra función como Administrador, que asigna tareas a TeamLead y no trabajará en las tareas.
+
+	public class Manager: ILead
+	{
+		public void AssignTask()
+		{
+			//Code to assign a task.
+		}
+		public void CreateSubTask()
+		{
+			//Code to create a sub task.
+		}
+		public void WorkOnTask()
+		{
+			throw new Exception("Manager can't work on Task");
+		}
+	}
+
+Ya que el Administrador no puede trabajar en una tarea y al mismo tiempo nadie puede asignar tareas al Administrador, esta WorkOnTask () no debe estar en la clase Administrador.
+Pero estamos implementando esta clase desde la interfaz de ILead, necesitamos proporcionar un método concreto.
+Aquí forzamos a la clase Manager a implementar un método WorkOnTask () sin un propósito. Esto está mal. El diseño viola el ISP.
+
+Corrigamos el diseño.
+
+Una interfaz que proporciona un contrato para WorkOnTask ().
+
+	public interface IProgrammer
+	{
+		void WorkOnTask();
+	}
+
+Una interfaz que proporciona contratos para gestionar las tareas:
+
+	public interface ILead
+	{
+		void AssignTask();
+		void CreateSubTask();
+	}
+
+Entonces la implementación se convierte en:
+
+	public class Programmer: IProgrammer
+	{
+		public void WorkOnTask()
+		{
+		//code to implement to work on the Task.
+		}
+	}
+	public class Manager: ILead
+	{
+		public void AssignTask()
+		{
+			//Code to assign a Task
+		}
+		public void CreateSubTask()
+		{
+			//Code to create a sub taks from a task.
+		}
+	}
+
+	TeamLead puede administrar tareas y puede trabajar en ellas si es necesario.
+
+	La clase TeamLead debe implementar las interfaces de IProgrammer e ILead.
+
+	public class TeamLead: IProgrammer, ILead
+	{
+		public void AssignTask()
+		{
+			//Code to assign a Task
+		}
+		public void CreateSubTask()
+		{
+			//Code to create a sub task from a task.
+		}
+		public void WorkOnTask()
+		{
+			//code to implement to work on the Task.
+		}
+	}
+
+Aquí separamos responsabilidades / propósitos, los distribuimos en múltiples interfaces y también proporcionamos un buen nivel de abstracción
+
+Debemos tener cuidado con definir interfaces con muchos métodos. De acuerdo a este principio, es mejor tener interfaces pequeñas, 
+con pocos métodos muy relacionados (alta cohesión), en lugar de tener interfaces voluminosas que obligan a definir muchos métodos a quien las implementa.
+Algunos patrones, especialmente los de comportamiento, pueden ser muy convenientes:
+
+- Cadena de responsabilidad.

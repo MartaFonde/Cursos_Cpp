@@ -1,0 +1,226 @@
+Supongamos que necesitamos trabajar en un módulo de registro de errores que registra los seguimientos de la pila de excepciones en un archivo.
+Las siguientes son las clases que proporcionan funcionalidad para registrar un seguimiento de pila en un archivo.
+
+	public class FileLogger   
+	{   
+	   public void LogMessage(string aStackTrace)   
+	   {   
+		  //code to log stack trace into a file.   
+	   }   
+	}   
+	public class ExceptionLogger   
+	{   
+		public void LogIntoFile(Exception aException)   
+		{   
+			FileLogger objFileLogger = new FileLogger();   
+			objFileLogger.LogMessage(GetUserReadableMessage(aException));   
+		}   
+		private GetUserReadableMessage(Exception ex)   
+		{   
+			string strMessage = string. Empty;   
+			//code to convert Exception's stack trace and message to user readable format.   
+			//   
+			//   
+			return strMessage;   
+		}   
+	}
+
+Una clase de cliente exporta datos de muchos archivos a una base de datos.
+
+	public class DataExporter   
+	{   
+		public void ExportDataFromFile()   
+		{   
+			try 
+			{   
+				//code to export data from files to database.   
+			}   
+			catch(Exception ex)   
+			{   
+				new ExceptionLogger().LogIntoFile(ex);   
+			}   
+		}   
+	}
+
+Se ve bien. Enviamos nuestra aplicación al cliente.
+Pero nuestro cliente desea almacenar este seguimiento de pila en una base de datos si se produce una excepción de IO.
+
+	public class DbLogger   
+	{   
+	   public void LogMessage(string aMessage)   
+	   {   
+		  //Code to write message in database.   
+	   }   
+	}   
+	public class FileLogger   
+	{   
+	   public void LogMessage(string aStackTrace)   
+	   {   
+		  //code to log stack trace into a file.   
+	   }   
+	}   
+	public class ExceptionLogger   
+	{   
+	   public void LogIntoFile(Exception aException)   
+	   {   
+		  FileLogger objFileLogger = new FileLogger();   
+		  objFileLogger.LogMessage(GetUserReadableMessage(aException));   
+	   }   
+	   public void LogIntoDataBase(Exception aException)   
+	   {   
+		  DbLogger objDbLogger = new DbLogger();   
+		  objDbLogger.LogMessage(GetUserReadableMessage(aException));   
+	   }   
+	   private string GetUserReadableMessage(Exception ex)   
+	   {   
+		  string strMessage = string.Empty;   
+		  //code to convert Exception's stack trace and message to user readable format.   
+		  ....   
+		  ....   
+		  return strMessage;   
+	   }   
+	}   
+	public class DataExporter   
+	{   
+	   public void ExportDataFromFile()   
+	   {   
+			try 
+			{   
+				//code to export data from files to database.   
+			}   
+			catch(IOException ex)   
+			{   
+				new ExceptionLogger().LogIntoDataBase(ex);   
+			}   
+			catch(Exception ex)   
+			{   
+				new ExceptionLogger().LogIntoFile(ex);   
+			}   
+		}   
+	}
+
+Se ve bien por ahora. Pero siempre que el cliente quiera introducir un nuevo Logger, debemos modificar el ExceptionLogger agregando un nuevo método.
+Si continuamos haciendo esto después de un tiempo, veremos una gran clase de ExceptionLogger con un gran conjunto de métodos que proporcionan 
+la funcionalidad para registrar un mensaje en varios destinos.
+
+Necesitamos alterar el diseño para que esta clase ExceptionLogger se pueda desacoplar de esas clases.
+Para hacer eso, necesitamos introducir una abstracción entre ellos, de modo que ExceptionLogger pueda comunicarse con la abstracción
+para registrar la excepción en lugar de depender directamente de las clases de bajo nivel.
+
+	public interface ILogger
+	{
+		void LogMessage(string aString);
+	}
+
+Ahora nuestras clases de bajo nivel necesitan implementar esta interfaz.
+
+	public class DbLogger: ILogger
+	{
+		public void LogMessage(string aMessage)
+		{
+			//Code to write message in database.
+		}
+	}
+	public class FileLogger: ILogger
+	{
+		public void LogMessage(string aStackTrace)
+		{
+			 //code to log stack trace into a file.
+		}
+	}
+
+Ahora, pasamos a la instancia de la clase de bajo nivel de la clase ExceptionLogger a la clase DataExporter para hacer que ExceptionLogger se desacople 
+de las clases de bajo nivel FileLogger y EventLogger.
+Y al hacerlo, estamos delegando en la clase DataExporter que decida a qué tipo de LOGGER se debe llamar en función de la excepción que se produce.
+
+	public class ExceptionLogger   
+	{   
+	   private ILogger _logger;   
+	   public ExceptionLogger(ILogger aLogger)   
+	   {   
+		  this._logger = aLogger;   
+	   }   
+	   public void LogException(Exception aException)   
+	   {   
+		  string strMessage = GetUserReadableMessage(aException);   
+		  this._logger.LogMessage(strMessage);   
+	   }   
+	   private string GetUserReadableMessage(Exception aException)   
+	   {   
+		  string strMessage = string.Empty;   
+		  //code to convert Exception's stack trace and message to user readable format.   
+		  ....   
+		  ....   
+		  return strMessage;   
+	   }   
+	}   
+    public class DataExporter   
+    {   
+       public void ExportDataFromFile()   
+       {   
+			ExceptionLogger _exceptionLogger;   
+			try {   
+			 //code to export data from files to database.   
+			}   
+			catch(IOException ex)   
+			{   
+				 _exceptionLogger = new ExceptionLogger(new DbLogger());   
+				 _exceptionLogger.LogException(ex);   
+			}   
+			catch(Exception ex)   
+			{   
+				 _exceptionLogger = new ExceptionLogger(new FileLogger());   
+				 _exceptionLogger.LogException(ex);   
+			}   
+       }   
+    }
+
+Hemos eliminado con éxito la dependencia de las clases de bajo nivel.
+
+Necesitamos crear una nueva clase de registro que implemente la interfaz ILogger y debemos agregar otro 
+bloque catch al método ExportDataFromFile de la clase DataExporter.
+
+	public class EventLogger: ILogger
+	{
+		public void LogMessage(string aMessage)
+		{
+			//Code to write message in system&#39;s event viewer.
+		}
+	}
+
+Y debemos agregar una condición en la clase DataExporter como se muestra a continuación:
+
+	public class DataExporter   
+	{   
+	   public void ExportDataFromFile()   
+	   {   
+			ExceptionLogger _exceptionLogger;   
+			try 
+			{   
+				//code to export data from files to database.   
+			}   
+			catch(IOException ex)   
+			{   
+				_exceptionLogger = new ExceptionLogger(new DbLogger());   
+				_exceptionLogger.LogException(ex);   
+			}   
+			catch(SqlException ex)   
+			{   
+				_exceptionLogger = new ExceptionLogger(new EventLogger()); 
+				_exceptionLogger.LogException(ex);   
+			}   
+			catch(Exception ex)   
+			{   
+				_exceptionLogger = new ExceptionLogger(new FileLogger());  
+				_exceptionLogger.LogException(ex);   
+			}   
+	   }   
+	}
+
+Se ve bien. Pero introdujimos la dependencia aquí en los bloques catch de la clase DataExporter.
+Necesitamos modificar tanto la clase DataExporter como la clase ExceptionLogger cuando necesitamos introducir una nueva funcionalidad de registro.
+Pero en el diseño actualizado necesitamos agregar solo otro bloque catch para la nueva función de registro de excepciones. 
+
+El acoplamiento no es inherentemente malo.
+Si no tiene cierta cantidad de acoplamiento, el software no hará nada. Lo único que debemos hacer es comprender el sistema, los requisitos y 
+el entorno de manera adecuada y encontrar las áreas donde se debe seguir el DIP.

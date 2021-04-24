@@ -1,0 +1,170 @@
+//El principio de sustitución de Liskov (LSP) establece que "debería poder utilizar cualquier clase derivada en lugar de una clase principal y hacer que se comporte de la misma manera sin modificaciones".
+//Asegura que una clase derivada no afecte el comportamiento de la clase principal, que una clase derivada debe ser sustituible por su clase base.
+
+// Ejemplo para aprender cómo un diseño puede violar el LSP. 
+//Supongamos que necesitamos crear una aplicación para administrar datos usando un grupo de texto de archivos SQL.
+// Necesitamos escribir la funcionalidad para cargar y guardar el texto de un grupo de archivos SQL en el directorio de la aplicación.
+// Entonces, necesitamos una clase que maneje la carga y guarde el texto de un grupo de archivos SQL junto con la Clase SqlFile
+
+public class SqlFile
+{
+    public string FilePath { get; set; }
+    public string FileText { get; set; }
+    public string LoadText()
+    {
+        /* Code to read text from sql file */
+    }
+    public string SaveText()
+    {
+        /* Code to save text into sql file */
+    }
+}
+
+public class SqlFileManager
+{
+    public List<SqlFile> lstSqlFiles { get; set}
+
+    public string GetTextFromFiles()
+    {
+        StringBuilder objStrBuilder = new StringBuilder();
+        foreach (var objFile in lstSqlFiles)
+        {
+            objStrBuilder.Append(objFile.LoadText());
+        }
+        return objStrBuilder.ToString();
+    }
+    public void SaveTextIntoFiles()
+    {
+        foreach (var objFile in lstSqlFiles)
+        {
+            objFile.SaveText();
+        }
+    }
+}
+
+//Ahora tenemos que tener algunos archivos de solo lectura en la carpeta de la aplicación, por lo que debemos restringir el flujo cada vez que intente guardarlos.
+//Podemos hacerlo creando una clase "ReadOnlySqlFile" que hereda la clase "SqlFile" y necesitamos modificar el método SaveTextIntoFiles () introduciendo una condición para evitar llamar al método SaveText () en las instancias ReadOnlySqlFile.
+
+public class SqlFile
+{
+    public string LoadText()
+    {
+        /* Code to read text from sql file */
+    }
+    public void SaveText()
+    {
+        /* Code to save text into sql file */
+    }
+}
+public class ReadOnlySqlFile : SqlFile
+{
+    public string FilePath { get; set; }
+    public string FileText { get; set; }
+    public string LoadText()
+    {
+        /* Code to read text from sql file */
+    }
+    public void SaveText()
+    {
+        /* Throw an exception when app flow tries to do save. */
+        throw new IOException("Can't Save");
+    }
+}
+
+//Para evitar una excepción, necesitamos modificar "SqlFileManager" agregando una condición al bucle.
+
+public class SqlFileManager
+{
+    public List<SqlFile> lstSqlFiles { get; set}
+    public string GetTextFromFiles()
+    {
+        StringBuilder objStrBuilder = new StringBuilder();
+        foreach (var objFile in lstSqlFiles)
+        {
+            objStrBuilder.Append(objFile.LoadText());
+        }
+        return objStrBuilder.ToString();
+    }
+    public void SaveTextIntoFiles()
+    {
+        foreach (var objFile in lstSqlFiles)
+        {
+            //Check whether the current file object is read only or not.If yes, skip calling it's   
+            // SaveText() method to skip the exception.   
+
+            if (!objFile is ReadOnlySqlFile)
+                objFile.SaveText();
+        }
+    }
+}
+
+//No podemos usar esta clase ReadOnlySqlFile como sustituto de su padre sin alterar el código de SqlFileManager.
+//Así que podemos decir que este diseño no está siguiendo LSP.
+
+//-----------------------------------
+
+//Hagamos este diseño siguiendo el LSP.
+//Aquí introduciremos INFERFACES para que la clase SqlFileManager sea independiente del resto de los bloques.
+
+public interface IReadableSqlFile
+{
+    string LoadText();
+}
+public interface IWritableSqlFile
+{
+    void SaveText();
+}
+
+//Ahora implementamos IReadableSqlFile a través de la clase ReadOnlySqlFile que solo lee el texto de los archivos de solo lectura.
+
+public class ReadOnlySqlFile : IReadableSqlFile
+{
+    public string FilePath { get; set; }
+    public string FileText { get; set; }
+    public string LoadText()
+    {
+        /* Code to read text from sql file */
+    }
+}
+
+//Aquí implementamos tanto IWritableSqlFile como IReadableSqlFile en una clase SqlFile mediante la cual podemos leer y escribir archivos.
+
+public class SqlFile : IWritableSqlFile, IReadableSqlFile
+{
+    public string FilePath { get; set; }
+    public string FileText { get; set; }
+    public string LoadText()
+    {
+        /* Code to read text from sql file */
+    }
+    public void SaveText()
+    {
+        /* Code to save text into sql file */
+    }
+}
+
+//Ahora el diseño de la clase SqlFileManager se vuelve así:
+
+public class SqlFileManager
+{
+    public string GetTextFromFiles(List<IReadableSqlFile> aLstReadableFiles)
+    {
+        StringBuilder objStrBuilder = new StringBuilder();
+        foreach (var objFile in aLstReadableFiles)
+        {
+            objStrBuilder.Append(objFile.LoadText());
+        }
+        return objStrBuilder.ToString();
+    }
+    public void SaveTextIntoFiles(List<IWritableSqlFile> aLstWritableFiles)
+    {
+        foreach (var objFile in aLstWritableFiles)
+        {
+            objFile.SaveText();
+        }
+    }
+}
+
+//Aquí, el método GetTextFromFiles () obtiene solo la lista de instancias de clases que implementan la interfaz IReadOnlySqlFile.
+//Eso significa que las instancias de clase SqlFile y ReadOnlySqlFile. 
+//Y el método SaveTextIntoFiles () obtiene solo las instancias de la lista de la clase que implementa la interfaz IWritableSqlFiles, en otras palabras, las instancias de SqlFile en este caso.
