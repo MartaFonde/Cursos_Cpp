@@ -51,7 +51,7 @@ Estructuras de datos en Java
 
         ***O(n)** siendo n el número de elementos* 
 
-        ![Big O](2.EstructurasDatos/Big_O.jpg)
+        ![Big O](2.EstructurasDatos/BigO.png)
 
 - Estructuras de datos
     - Es una forma de organizar una colección de datos en una computadora para que puedan ser utilizados de manera eficiente.  
@@ -168,7 +168,7 @@ Estructuras de datos en Java
              
 
 -  Arrays dinámicos (ArrayList)
-    - Son un envoltorio a un array estático, y hace operaciones sobre este para modificar su tamaño de forma óptima.     
+    - Son un envoltorio a un array estático, y hace operaciones sobre éste para modificar su tamaño de forma óptima.     
       Internamente son una serie de operaciones para crear y borrar (copia) arrays estáticos en base a nuestras operaciones       
     - ADT
         - Crear()
@@ -280,33 +280,32 @@ En C#
 Objetivos curso: Conocer buenas prácticas de programación, generar código escalable, limpio y de calidad y código más mantenible  
 Diseño orientado a objetos
 
-Problemas diseño app: demasiadas funcionalidades sin relación en una clase (poco encapsulado), demasiada interrelación/dependencia entre clases (estrechamente acopladas), código duplicado  
-Soluciones: elección arquitectura, principios de diseño, patrones de diseño  
-Objetivo: Disminuir costes de mantenimiento. Poder añadir/modificar funcionalidades más fácilmente. C´p
+Problemas diseño app: demasiadas funcionalidades sin relación en una clase (poco encapsulado), demasiada interrelación/dependencia entre clases (estrechamente acopladas), código duplicado  Soluciones: elección arquitectura, principios de diseño, patrones de diseño  
+Objetivo: Disminuir costes de mantenimiento. Poder añadir/modificar funcionalidades más fácilmente. 
 
-- **SOLID** -> Principios base a seguir antes de proponer una arquitectura de software. Código escalable a un futuro. Alta cohesión y bajo acoplamiento (menor dependencia, mejor especificación propositos sistema)
+- **SOLID** -> Principios base a seguir antes de proponer una arquitectura de software. Código escalable a un futuro. Alta cohesión y bajo acoplamiento (menor dependencia, mejor especificación propósitos sistema)
     - Alta cohesión: Información de una clase coherente, estar relacionada con la clase
     - Bajo acoplamiento: Clases menos ligadas entre si. En caso de modificación, menor repercusión posible en el resto. + Reutilización - Dependencia 
      
     - **S**: Single Responsability Principle (SRP) 
         - "Cada módulo de software debe tener una sola razón para cambiar." Cada clase debe tener un único trabajo/proposito.  
-        - 
-    - **O**: Open/Closed Principle (OCP)
+         
+    - **O**: Open/Closed Principle ([OCP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/OPC.txt))
         - Un módulo/clase está abierto para extensión y cerrado para modificación. Si queremos añadir funcionalidades nuevo lo ideal sería poder construir sobre lo que ya existe (sin modificaciones grandes). No alterar a menos que haya errores.  
             Extensiones --> Interfaces/Clases abstractas -> Posibles arreglos para clases que las implementen  
 
-    - **L**: Liskov substitution Principle (LSP)
+    - **L**: Liskov substitution Principle ([LSP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/LSP.txt))
         - "Si S es un subtipo de T, entonces los objetos de tipo T en un programa de computadora pueden ser sustituidos por objetos de tipo S (es decir, los objetos de tipo S pueden sustituir objetos de tipo T ), sin alterar ninguna de las propiedades deseables de ese programa (la corrección, la tarea que realiza, etc.)" Wikipedia   
         - Establece que debería poder usarse una clase derivada en lugar de la clase ppal y con mismo comportamiento sin modificaciones.
              Derivada no afecte comportamiento de la ppal. Clase derivada debe ser sustituible por su clase base. 
         - Extensión de ppio OCP: Clases derivadas amplíen clases base sin modificar su comportamiento.  
                  
-    - **I**: Interface Segregation Principle (ISP)
+    - **I**: Interface Segregation Principle ([ISP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/ISP.txt))
         - "Los clientes no deben ser forzados a implementar interfaces que no usan. En lugar de una sola interfaz, se prefieren muchas interfaces pequeñas basadas en grupos de métodos (muy relacionados, alta cohesión), cada uno de los cuales sirve a un submódulo."  
              Una interfaz debe estar más relacionada con el código que la usa (del cliente) que con el código que la implementa (la clase).  
              Cada interfaz debe de tener un propósito/responsabilidad único (ppio SRP)                              
 
-    - **D**: Dependency Inversion Principle (DIP)
+    - **D**: Dependency Inversion Principle ([DIP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/DIP.txt))
         - Los módulos de alto nivel no deben depender de módulos de bajo nivel (+ op. detalladas), si no de abstracciones.  
         - Las abstracciones no deben depender de los detalles. Los detalles deben depender de las abstracciones.  
         - Patrones que ayuden a abstraer nuestros módulos.  
