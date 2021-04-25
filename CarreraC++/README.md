@@ -45,13 +45,8 @@ Estructuras de datos en Java
 
 - Análisis de algoritmos
     - Cómo medir la velocidad de un algoritmo --> Análisis de las instrucciones del algoritmo en base a los datos con los que está trabajando.
-    - Notación Big O o crecimiento de funciones: nos indica qué tan rápido es un algoritmo,   
+    - Notación **Big O** o crecimiento de funciones: nos indica qué tan rápido es un algoritmo,   
     No tiene en cuenta los coeficientes (desviaciones), sólo el factor dominante (elemento que más crece).
-
-
-        ***O(n)** siendo n el número de elementos* 
-
-        ![Big O](2.EstructurasDatos/BigO.png)
 
 - Estructuras de datos
     - Es una forma de organizar una colección de datos en una computadora para que puedan ser utilizados de manera eficiente.  
@@ -62,82 +57,14 @@ Estructuras de datos en Java
     - Primitivos: Booleanos, caracteres, enteros, números de punto flotante, punteros.
     - Compuestos: Registros u objetos, string, array 
           
-- Tipos de datos genéricos
-
-        public class ListaGenerica <T>{
-
-            private ArrayList<T> lista = new ArrayList<T>();
-
-            public ListaGenerica() {}
-
-            public T get(int index) {
-                return lista.remove(index);
-            }
-
-            public void delete(int index) {
-                lista.remove(index);
-            }
-
-            public void add(T integer) {
-                lista.add(integer);
-            }
-
-            public int size() {
-                return lista.size();
-            }
-
-        }
-
-    Se especifca el tipo de dato a través de <>
-         
-        public class Pareja<K,V> {
-
-            private K key;
-            private V value;
-    
-            public Pareja(K key, V value) {
-                this.key = key;
-                this.value = value;
-            }
-
-            public K getKey() {
-                return key;
-            }
-
-            public void setKey(K key) {
-                this.key = key;
-            }
-
-            public V getValue() {
-                return value;
-            }
-
-            public void setValue(V value) {
-                this.value = value;
-            }
-        }
-
-    También podríamos decir que el tipo de dato usado en valores sean solo aquellos que extienden de la interfaz Usuarios, evitando así, que podamos usar cualquier otro tipo de dato
-
-        public class Pareja<K, V extends Usuarios> { } 
- 
-- Tipos de datos abstractos (TAD ó ADT)
- 
+- Tipos de datos genéricos   
+    [Lista genérica](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/2.EstructurasDatos/ListaGenerica.txt)         
+    [Pareja <K,V>](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/2.EstructurasDatos/Pareja.txt)
+     
+- Tipos de datos abstractos (TAD ó ADT)   
     Modelo matemático para definir tipos de datos, con un comportamiento esperado. En Java normalmente se escriben en interfaces.
 
-        public interface Pila<T>{
-            void push(T t)
-
-            void T pop()
-
-            void T peek()
-
-            boolean isEmpty()
-
-            int size()
-        }
-
-    Ejemplos:  montículo, el árbol, o la pila, ...  Se implementan con arrays (una estructura de datos para implementar un ADT de una lista por ejemplo).
+    Ejemplos:  montículo, el árbol, o la pila, ... 
     Según como se implementen, podrán tener un coste mayor o menor.
 
 
@@ -146,45 +73,11 @@ Estructuras de datos en Java
   - Arrays estáticos 
     - Almacena de forma contigua los valores en la memoria.
     - Rellena todas las posiciones con un valor por defecto (int con 0, objetos con null, ...) definidos por Java
-    - ADT (operaciones):
-        - Crear(tamaño)
-            - Coste O(N). Recorre cada posición de la memoria con el valor por defecto
-        - EstablecerValorEn(valor, posición)
-            - Coste O(1)  
-        - Obtener(posición)
-            -  A través de la posición de memoria donde empieza el array, y el tamaño de cada objeto, accede a la posición
-            -  Coste O(1) 
-        - Búsqueda
-            - Coste O(N), porque en el peor caso estará en la última posición
-        - Ordenar 
-            - Coste O(NLogN)
-            - Arrays.sort(array)
-        - Búsqueda (en array ordenado)
-            - Coste O(LogN) 
-            - Arrays.binarySearch(array, key)            
-        - Copiar un rango     
-            - Arrays.copyOfRange(array, desde incluido, hasta no incluido)             
-            - Coste O(N), en el peor caso copia todas las posiciones
              
 
 -  Arrays dinámicos (ArrayList)
     - Son un envoltorio a un array estático, y hace operaciones sobre éste para modificar su tamaño de forma óptima.     
       Internamente son una serie de operaciones para crear y borrar (copia) arrays estáticos en base a nuestras operaciones       
-    - ADT
-        - Crear()
-            - Por defecto, array vacío con capacidad de 10. Coste: O(N)
-        - Agregar(elemento)
-            - Primero asegura capacidad interna del array. Si sobrepasa, crea un nuevo array con mayor capacidad (+/- el doble) en el que copia todos los elementos del viejo.
-            - Amortizar coste de inserción -> O(1) = establecer
-            - Coste O(N) en el peor caso
-        - Agregar(elemento, posición)
-            - Coste O(N) en el peor caso, insertando en 0
-        - Borrar(posición)
-            - Coste O(N) igual que el caso anterior
-        - Obtener(posición)
-            - Coste O(1) = estáticos
-        - Establecer(elemento, posición)
-            - Coste O(1)
           
   
 - Listas ligadas 
@@ -192,28 +85,6 @@ Estructuras de datos en Java
     - Datos no contiguos. Guarda dato y la referencia (enlace) al siguiente en una posición de memoria.
     - Clase Nodo genérica con Dato y Nodo al Siguiente
     - Nodo principio apuntando a Nodo A y un final apuntando al Nodo final (Siguiente = Null)
-    - ADT:
-        - Insertar al principio
-            - Coste O(1) ---> Nuevo Nodo B -> B.siguiente = Principio -> Principio = B
-        - Insertar al final
-            - Coste O(1) con lista vacía --> Nuevo Nodo A -> Principio y Final apuntando a A
-            - Coste O(1) en lista con objetos --> Nuevo Nodo B -> Final.sig = B -> Final = B
-        - Insertar en posición
-            - Coste: O(N)
-               - Nuevo Nodo, sig = null
-               - Recorrer lista con dos nodos: Anterior mantendrá nodo anterior y Actual en nodo que se está comprobando si es el buscado
-               - Anterior.sig = Nuevo
-               - Nuevo.sig = Actual 
-        - Eliminar al principio 
-            - Coste O(1) ---> Principio = Nodo A.sig
-        - Eliminar en posición o al final
-            - Coste O(N) ---> igual que Insertar en posición -> Anterior.sig = Actual.sig
-        - Obtener elemento del principio
-            - Coste O(1)
-        - Obtener elemento del final
-            - Coste O(1)
-        - Acceso a posición
-            - Coste O(N) -> Recorrer al menos todo. Posición de memoria desconocida
  
     - Lista ligada doble
         - Cada Nodo tiene dos enlaces, al siguiente y al anterior.
@@ -225,45 +96,16 @@ Estructuras de datos en Java
     - LIFO (Last in, Last out)
     - Implementar acción deshacer (apilando acciones) o búsqueda en profundidad 
     - Guardar llamadas de las funciones recursivas en el orden en que se deben ejecutar.
-    - ADT: Crear, Apilar (push), Desapilar (pop), Ver la cima, Tamaño, Ver si está vacía
-
-    - Implementar pila con lista ligada. ADT:
-          - Apilar/Desapilar -- Insertar/Eliminar (SE QUITA) al principio. Coste O(1)
-          - Ver la cima Coste O(1)
-
-    - Implementar pila con array dinámico
-          - Cima variable top inicializada a -1
-          - Apilar: top++ --> Insertar elemento en top. Coste O(1)
-          - Desapilar: top--  Coste O(1)
-          - Ver la cima con top. Coste O(1)
 
 
 - Colas(Queue)
     - FIFO (First in, First Out)
     - Transferir datos entre procesos asíncronos, cola de entrada para servidor, búsqueda de anchura...
-    - ADT: crear, encolar, desencolar, "" = pila
-     
-    - Implementar cola con lista ligada. 
-        - Encolar -- Insertar al final. Coste O(1)
-        - Desencolar -- Eliminar (SE QUITA) al inicio. Coste O(1)
-        - Ver al frente con top. 1er elemento lista. Coste O(1)
- 
 
 - Montículos
     - Retiramos valores de forma ordenada (el array no debe estar necesariamente ordenado) con un coste bajo
     - Es un tipo de árbol binario, tiene un nodo y este dos hijos (puede ser altura n)
     - Dos tipos: max (orden mayor a menor, padre > hijos) y min (p < h)
-    - Ha de rellenarse de izq a der sin dejar ningún nodo en medio sin hijos
-    - Implementar algoritmo de Prim, de Dijkstra, lista ordenada de inserción muy rápida y eficiente
-    - ADT de una implementación cola de prioridad:
-        - Crear: array dinámico
-        - Insertar elem: última pos array. Método flotar -> mover elem a pos correspondiente
-            Acceder a padre a O(1) -> si k>0, padre está en pos (k-1)/2 
-            Nodos = 2^(altura+1)- 1 == Altura = Log2(Nodos) --> Altura = Log2(lista.size) --> Coste O(LogN)
-        - Retirar elemento max/min: quitamos 1er elem, el último se coloca en la 1a pos y usamos método hundir: comprobación con hijos más peq/may -> (2*k)+1 hijo izq, (2*k)+2 hijo der --> O(LogN)  
-    
-    - HeapSort: algoritmo de ordenamiento que se basa simplemente en ir retirando todos los elementos de un montículo (heap) e irlo insertando por ese orden en el array
-        - Coste O(NLogN)
 
 **Bibliografía recomendada:**
 - SedGewick R., Wayne K. Algorithms     
@@ -271,11 +113,11 @@ Estructuras de datos en Java
 - Bhargava, A. Grokking algorithms
 
 ---
+
+**24/04/2021**
 #### 3. SOLID Y PATRONES DE DISEÑO ####
 
 En C#
-
-**24/04/2021**
 
 Objetivos curso: Conocer buenas prácticas de programación, generar código escalable, limpio y de calidad y código más mantenible  
 Diseño orientado a objetos
@@ -283,34 +125,19 @@ Diseño orientado a objetos
 Problemas diseño app: demasiadas funcionalidades sin relación en una clase (poco encapsulado), demasiada interrelación/dependencia entre clases (estrechamente acopladas), código duplicado  Soluciones: elección arquitectura, principios de diseño, patrones de diseño  
 Objetivo: Disminuir costes de mantenimiento. Poder añadir/modificar funcionalidades más fácilmente. 
 
-- **SOLID** -> Principios base a seguir antes de proponer una arquitectura de software. Código escalable a un futuro. Alta cohesión y bajo acoplamiento (menor dependencia, mejor especificación propósitos sistema)
-    - Alta cohesión: Información de una clase coherente, estar relacionada con la clase
-    - Bajo acoplamiento: Clases menos ligadas entre si. En caso de modificación, menor repercusión posible en el resto. + Reutilización - Dependencia 
+- **SOLID** -> Principios base a seguir antes de proponer una arquitectura de software. Código escalable a un futuro. Alta cohesión y bajo acoplamiento (menor dependencia, mejor especificación propósitos sistema)  
+Alta cohesión: Información de una clase coherente, estar relacionada con la clase  
+Bajo acoplamiento: Clases menos ligadas entre si. En caso de modificación, menor repercusión posible en el resto. + Reutilización - Dependencia 
      
-    - **S**: Single Responsability Principle (SRP) 
-        - "Cada módulo de software debe tener una sola razón para cambiar." Cada clase debe tener un único trabajo/proposito.  
+    - **S**: Single Responsability Principle (SRP)       
          
     - **O**: Open/Closed Principle ([OCP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/OPC.txt))
-        - Un módulo/clase está abierto para extensión y cerrado para modificación. Si queremos añadir funcionalidades nuevo lo ideal sería poder construir sobre lo que ya existe (sin modificaciones grandes). No alterar a menos que haya errores.  
-            Extensiones --> Interfaces/Clases abstractas -> Posibles arreglos para clases que las implementen  
-
-    - **L**: Liskov substitution Principle ([LSP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/LSP.txt))
-        - "Si S es un subtipo de T, entonces los objetos de tipo T en un programa de computadora pueden ser sustituidos por objetos de tipo S (es decir, los objetos de tipo S pueden sustituir objetos de tipo T ), sin alterar ninguna de las propiedades deseables de ese programa (la corrección, la tarea que realiza, etc.)" Wikipedia   
-        - Establece que debería poder usarse una clase derivada en lugar de la clase ppal y con mismo comportamiento sin modificaciones.
-             Derivada no afecte comportamiento de la ppal. Clase derivada debe ser sustituible por su clase base. 
-        - Extensión de ppio OCP: Clases derivadas amplíen clases base sin modificar su comportamiento.  
+        
+    - **L**: Liskov substitution Principle ([LSP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/LSP.txt))       
                  
     - **I**: Interface Segregation Principle ([ISP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/ISP.txt))
-        - "Los clientes no deben ser forzados a implementar interfaces que no usan. En lugar de una sola interfaz, se prefieren muchas interfaces pequeñas basadas en grupos de métodos (muy relacionados, alta cohesión), cada uno de los cuales sirve a un submódulo."  
-             Una interfaz debe estar más relacionada con el código que la usa (del cliente) que con el código que la implementa (la clase).  
-             Cada interfaz debe de tener un propósito/responsabilidad único (ppio SRP)                              
-
-    - **D**: Dependency Inversion Principle ([DIP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/DIP.txt))
-        - Los módulos de alto nivel no deben depender de módulos de bajo nivel (+ op. detalladas), si no de abstracciones.  
-        - Las abstracciones no deben depender de los detalles. Los detalles deben depender de las abstracciones.  
-        - Patrones que ayuden a abstraer nuestros módulos.  
-        - Inyeccion de dependencia (inversión de control).   
-        - Evitar acoplamiento entre alto-bajo nivel(cambios de una clase pueden romper otra) --> Hacer que dependan de abstracciones
+       
+    - **D**: Dependency Inversion Principle ([DIP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/DIP.txt))       
         
     Objetivo ppios SOLID: Código ordenado, legible y fácil de mantener. El código puede ser que aumente de tamaño, pero será de mejor calidad.
     Respetando estos principios se han desarrollado los patrones creacionales, estructurales y de comportamiento. 
@@ -335,56 +162,58 @@ Objetivos: catálogos de elementos reusables, evitar la reiteración en la búsqued
 No -> Imponer ciertas alternativas de diseño frente a otras.
 
 
-1. Patrones creacionales -> Creación de instancia. Encapsular y extraer dicha creación.  
-    -  **Abstract Factory** (Frecuencia de uso: Alta)
-         - Interfaz para crear familias de objetos relacionados o dependientes sin especificar sus clases concretas (sin especificarse directamente).  
+1. **Patrones creacionales** -> Creación de instancia. Encapsular y extraer dicha creación.  
+    -  Abstract Factory: Interfaz para crear familias de objetos relacionados o dependientes sin especificar sus clases concretas (sin especificarse directamente).                                
+
+    -  Builder: Separa la construcción de un objeto complejo de su representación para que el mismo proceso de construcción pueda crear diferentes representaciones.                  
+
+    - Factory Method: Define una interfaz para crear un objeto, pero deja que las subclases decidan de qué clase crear una instancia. Factory Method permite que una clase difiera la creación de instancias a subclases.
+      Flexibilidad para crear diferentes objetos. Va a haber una clase abstracta que puede proporcionar un obj predeterminado, pero cada subclase va a crear una instancia de una versión extendida del obj.                           
          
-        [Plantilla Estructura](https://github.com/cdiazal/SOLID_Patterns/tree/master/Patterns/Creational%20Patterns/GangOfFour.Abstract.Structural)  
-
-        ![Abstract Factory](3.SOLID_PatronesDisenho/patronesCreacionales/AbstractFactory.gif)   
-
-        [Ejemplo](https://github.com/cdiazal/SOLID_Patterns/tree/master/Patterns/Creational%20Patterns/GangOfFour.Abstract.RealWorld)
-
-        *Creación de jerarquía paralela de objetos y abstracción de la creación de objetos- No se crean todas las clases dentro de Cliente.*                 
-
-    -  **Builder** (Frecuencia de uso: Media baja)
-        - Separa la construcción de un objeto complejo de su representación para que el mismo proceso de construcción pueda crear diferentes representaciones.  
-         
-         [Código Estructural](https://github.com/cdiazal/SOLID_Patterns/tree/master/Patterns/Creational%20Patterns/GangOfFour.Builder.Structural)
-
-         ![Builder](3.SOLID_PatronesDisenho/patronesCreacionales/Builder.gif)
-
-          [Ejemplo](https://github.com/cdiazal/SOLID_Patterns/tree/master/Patterns/Creational%20Patterns/GangOfFour.Factory.RealWorld)
-
-    - **Factory Method** (Frecuencia de uso: Alta)
-        - Define una interfaz para crear un objeto, pero deja que las subclases decidan de qué clase crear una instancia. Factory Method permite que una clase difiera la creación de instancias a subclases.
-        - Flexibilidad para crear diferentes objetos. Va a haber una clase abstracta que puede proporcionar un obj predeterminado, pero cada subclase va a crear una instancia de una versión extendida del obj.
-         
-        [Código Estructural](https://github.com/cdiazal/SOLID_Patterns/tree/master/Patterns/Creational%20Patterns/GangOfFour.Factory.Structura)
-
-        ![Factory](3.SOLID_PatronesDisenho/patronesCreacionales/Factory.gif)
-        
-        [Ejemplo](https://github.com/cdiazal/SOLID_Patterns/tree/master/Patterns/Creational%20Patterns/GangOfFour.Factory.RealWorld)
-         
-    - **Prototype** (Frecuencia de uso: Media)
-        - Especifica el tipo de objetos para crear utilizando una instancia prototípica (obj existentes del mismo tipo) y crea nuevos objetos copiando este prototipo.  
-        
-        [Código Estructural](https://github.com/cdiazal/SOLID_Patterns/tree/master/Patterns/Creational%20Patterns/GangOfFour.Prototype.Structura)  
-
-        ![Prototype](3.SOLID_PatronesDisenho/patronesCreacionales/Prototype.gif)  
-
-        [Ejemplo](https://github.com/cdiazal/SOLID_Patterns/tree/master/Patterns/Creational%20Patterns/GangOfFour.Prototype.RealWorld)  
+    - Prototype: Especifica el tipo de objetos para crear utilizando una instancia prototípica (obj existentes del mismo tipo) y crea nuevos objetos copiando este prototipo.          
  
-    - **Singleton**  (Frecuencia de uso: Media alta)
-        - Se asegura de que una clase tenga solo una instancia y proporciona un punto global de acceso a ella.
-        
-        [Código Estructural](https://github.com/cdiazal/SOLID_Patterns/tree/master/Patterns/Creational%20Patterns/GangOfFour.Singleton.Structural)
-        
-        ![Singleton](3.SOLID_PatronesDisenho/patronesCreacionales/Singleton.gif)
-
-        [Ejemplo](https://github.com/cdiazal/SOLID_Patterns/tree/master/Patterns/Creational%20Patterns/GangOfFour.Singleton.RealWorld)
+    - Singleton: Se asegura de que una clase tenga solo una instancia y proporciona un punto global de acceso a ella.             
 
 
-2. Patrones estructurales -> Cómo utilizar estructuras de datos complejas a partir de datos más simples. Crear interconexión entre objetos y que éstas relaciones no se vean afectadas por cambios en los requisitos del prog.
-  
-3. Patrones de comportamiento -> Especifican el comportamiento entre objetos del prog. Interacción y responsabilidades entre clases y objetos, y gestión de algoritmos que la encapsulan.
+**25/04/2021**  
+
+2. **Patrones estructurales** -> Cómo utilizar estructuras de datos complejas a partir de datos más simples. Crear interconexión entre objetos y que éstas relaciones no se vean afectadas por cambios en los requisitos del prog.
+    - Adapter: Convierte la interfaz de una clase en otra interfaz que los clientes esperan. El Adapter permite que las clases trabajen juntas y que no podrían hacerlo de otra manera debido a interfaces incompatibles.    
+    
+    - Bridge: Desacopla una abstracción de su implementación para que los dos puedan variar independientemente.
+
+    - Composite: Compone los objetos en estructuras de árbol para representar jerarquías enteras. Composite permite a los clientes tratar objetos individuales y composiciones de objetos de manera uniforme.
+
+    - Decorator: Asigna responsabilidades adicionales a un objeto dinámica mente. Ofrecen una alternativa flexible a las subclases para extender la funcionalidad.
+
+    - Facade: Proporciona una interfaz unificada a un conjunto de interfaces en un subsistema. Façade define una interfaz de nivel superior que hace que el subsistema sea más fácil de usar.
+
+    - Flyweight: Soporta una gran cantidad de objetos pequeños de manera eficiente.
+
+     - Proxy: Proporciona un sustituto o un marcador de posición para que otro objeto controle el acceso a él.
+
+3. **Patrones de comportamiento** -> Especifican el comportamiento entre objetos del prog. Interacción y responsabilidades entre clases y objetos, y gestión de algoritmos que la encapsulan.
+    -  Chain of Responsability: Evita acoplar el remitente de una solicitud a su receptor, dándole a más de un objeto la oportunidad de manejar la solicitud. Encadena los objetos receptores y pasa la solicitud a lo largo de la cadena hasta que un objeto lo maneje.
+
+    -  Command: Encapsula una solicitud como un objeto, lo que le permite parametrizar a los clientes con diferentes solicitudes, solicitudes de cola o de registro y admite operaciones que no se pueden deshacer.
+
+    -  Interpreter: Dado un lenguaje, define una representación para su gramática junto con un intérprete que usa la representación para interpretar sentencias en el idioma.
+
+    -  Iterator: Proporciona una forma de acceder a los elementos de un objeto agregado de forma secuencial sin exponer su representación subyacente.
+
+    -  Mediator: Define un objeto que encapsula cómo interactúa un conjunto de objetos. El Mediator promueve el bajo acoplamiento evitando que los objetos se refieran entre sí explícitamente, y le permite variar su interacción de forma independiente.
+ 
+    -  Memento: Sin violar la encapsulación, captura y externaliza el estado interno de un objeto para que el objeto pueda restaurarse a este estado más adelante.
+
+    -  Observer: Define una dependencia de uno a muchos entre los objetos para que cuando un objeto cambie de estado, todos los objetos que dependan de él sean notificados y actualizados automáticamente.
+
+    -  State: Permite que un objeto altere su comportamiento cuando cambia su estado interno. El objeto aparecerá para cambiar su clase.
+ 
+    -  Strategy: Define una familia de algoritmos, encapsula cada uno de ellos y los hace intercambiables entre sí. Strategy permite que el algoritmo varíe independientemente de los clientes que lo utilizan.
+
+    -  Template Method: Define el esqueleto de un algoritmo en una operación, aplazando algunos pasos a las subclases. Template Method permite a las subclases redefinir ciertos pasos de un algoritmo sin cambiar la estructura del algoritmo.
+
+    -  Visitor: Representa una operación a realizar en los elementos de una estructura de objeto. Visitor le permite definir una nueva operación sin cambiar las clases de los elementos sobre los que opera.
+
+- **Antipatrones de diseño**  
+

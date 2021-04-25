@@ -1,0 +1,11 @@
+public interface Pila<T>{
+	void push(T t)
+
+	void T pop()
+
+	void T peek()
+
+	boolean isEmpty()
+
+	int size()
+}
