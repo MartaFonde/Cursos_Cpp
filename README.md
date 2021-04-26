@@ -14,7 +14,7 @@ OpenWebinars
 
 ***
 
-#### 1.	INTRODUCCIÓN A LA PROGRAMACIÓN ####
+### 1.	INTRODUCCIÓN A LA PROGRAMACIÓN ###
 
 **20/04/2021**
 
@@ -37,7 +37,7 @@ Dado que son ejercicios muy sencillos  (y muchos ya están subidos en los
 primeros repositorios que he subido aquí), no los haré pero subiré los enunciados.
 
 ---
-#### 2. INTRODUCCIÓN A LAS ESTRUCTURAS DE DATOS ####
+### 2. INTRODUCCIÓN A LAS ESTRUCTURAS DE DATOS ###
 
 **22/04/2021**
 
@@ -115,29 +115,30 @@ Estructuras de datos en Java
 ---
 
 **24/04/2021**
-#### 3. SOLID Y PATRONES DE DISEÑO ####
+### 3. SOLID Y PATRONES DE DISEÑO ###
 
 En C#
 
 Objetivos curso: Conocer buenas prácticas de programación, generar código escalable, limpio y de calidad y código más mantenible  
 Diseño orientado a objetos
 
-Problemas diseño app: demasiadas funcionalidades sin relación en una clase (poco encapsulado), demasiada interrelación/dependencia entre clases (estrechamente acopladas), código duplicado  Soluciones: elección arquitectura, principios de diseño, patrones de diseño  
+Problemas diseño app: demasiadas funcionalidades sin relación en una clase (poco encapsulado), demasiada interrelación/dependencia entre clases (estrechamente acopladas), código duplicado  
+Soluciones: elección arquitectura, principios de diseño, patrones de diseño  
 Objetivo: Disminuir costes de mantenimiento. Poder añadir/modificar funcionalidades más fácilmente. 
 
 - **SOLID** -> Principios base a seguir antes de proponer una arquitectura de software. Código escalable a un futuro. Alta cohesión y bajo acoplamiento (menor dependencia, mejor especificación propósitos sistema)  
 Alta cohesión: Información de una clase coherente, estar relacionada con la clase  
 Bajo acoplamiento: Clases menos ligadas entre si. En caso de modificación, menor repercusión posible en el resto. + Reutilización - Dependencia 
      
-    - **S**: Single Responsability Principle [SRP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/SRP.txt)       
+    - **S**: Single Responsability Principle ([SRP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/SRP.txt))       
          
-    - **O**: Open/Closed Principle ([OCP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/OPC.txt)
+    - **O**: Open/Closed Principle ([OCP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/OPC.txt))
         
-    - **L**: Liskov substitution Principle ([LSP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/LSP.txt)       
+    - **L**: Liskov substitution Principle ([LSP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/LSP.txt))       
                  
-    - **I**: Interface Segregation Principle ([ISP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/ISP.txt)
+    - **I**: Interface Segregation Principle ([ISP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/ISP.txt))
        
-    - **D**: Dependency Inversion Principle ([DIP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/DIP.txt)       
+    - **D**: Dependency Inversion Principle ([DIP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/DIP.txt))       
         
     Objetivo ppios SOLID: Código ordenado, legible y fácil de mantener. El código puede ser que aumente de tamaño, pero será de mejor calidad.
     Respetando estos principios se han desarrollado los patrones creacionales, estructurales y de comportamiento. 
