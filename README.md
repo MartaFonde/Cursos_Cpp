@@ -156,7 +156,7 @@ Bajo acoplamiento: Clases menos ligadas entre si. En caso de modificación, meno
 Ahorro de tiempo. Validez de código. Uso de lenguaje común. Aplicaciones robustas, facilitan mantenimiento. Nos ayudan a cumplir muchos ppios SOLID, control de cohesión, acoplamiento, reutilizar código...   
 
 
-Bibliografía: Design Patterns. Gang of Four    
+**Bibliografía**: Design Patterns. Gang of Four    
 
 
 Objetivos: catálogos de elementos reusables, evitar la reiteración en la búsqueda de soluciones a problemas ya conocidos y solucionados, vocabulario común entre diseñadores, Estandarizar el modo en que se realiza el diseño, facilitar el aprendizaje  
@@ -217,4 +217,9 @@ No -> Imponer ciertas alternativas de diseño frente a otras.
     -  [Visitor](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesComportamiento/visitor.gif): Representa una operación a realizar en los elementos de una estructura de objeto. Visitor le permite definir una nueva operación sin cambiar las clases de los elementos sobre los que opera.
 
 - **Antipatrones de diseño**  
+
+***
+
+**26/04/2021**
+### 4. INTRODUCCIÓN A C++ ###
 
