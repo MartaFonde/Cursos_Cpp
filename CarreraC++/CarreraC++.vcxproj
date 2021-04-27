@@ -154,6 +154,12 @@
     <Image Include="3.SOLID_PatronesDisenho\patronesCreacionales\Singleton.gif" />
     <Image Include="3.SOLID_PatronesDisenho\Prototype.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="modificadores.cpp" />
+    <ClCompile Include="otras_funcionalidades.cpp" />
+    <ClCompile Include="tipos_size_parte1.cpp" />
+    <ClCompile Include="tipos_size_parte2.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -1,4 +1,4 @@
-[CARRERA: PROGRAMADOR ++ ](https://openwebinars.net/academia/carrera/programador-cpp/)
+[CARRERA: PROGRAMADOR ++ ](https://openwebinars.net/carreras/programador-cpp/)
 
 OpenWebinars 
 
@@ -14,7 +14,7 @@ OpenWebinars
 
 ***
 
-#### 1.	INTRODUCCIÓN A LA PROGRAMACIÓN ####
+### 1.	INTRODUCCIÓN A LA PROGRAMACIÓN ###
 
 **20/04/2021**
 
@@ -37,7 +37,7 @@ Dado que son ejercicios muy sencillos  (y muchos ya están subidos en los
 primeros repositorios que he subido aquí), no los haré pero subiré los enunciados.
 
 ---
-#### 2. INTRODUCCIÓN A LAS ESTRUCTURAS DE DATOS ####
+### 2. INTRODUCCIÓN A LAS ESTRUCTURAS DE DATOS ###
 
 **22/04/2021**
 
@@ -115,29 +115,30 @@ Estructuras de datos en Java
 ---
 
 **24/04/2021**
-#### 3. SOLID Y PATRONES DE DISEÑO ####
+### 3. SOLID Y PATRONES DE DISEÑO ###
 
 En C#
 
 Objetivos curso: Conocer buenas prácticas de programación, generar código escalable, limpio y de calidad y código más mantenible  
 Diseño orientado a objetos
 
-Problemas diseño app: demasiadas funcionalidades sin relación en una clase (poco encapsulado), demasiada interrelación/dependencia entre clases (estrechamente acopladas), código duplicado  Soluciones: elección arquitectura, principios de diseño, patrones de diseño  
+Problemas diseño app: demasiadas funcionalidades sin relación en una clase (poco encapsulado), demasiada interrelación/dependencia entre clases (estrechamente acopladas), código duplicado  
+Soluciones: elección arquitectura, principios de diseño, patrones de diseño  
 Objetivo: Disminuir costes de mantenimiento. Poder añadir/modificar funcionalidades más fácilmente. 
 
 - **SOLID** -> Principios base a seguir antes de proponer una arquitectura de software. Código escalable a un futuro. Alta cohesión y bajo acoplamiento (menor dependencia, mejor especificación propósitos sistema)  
 Alta cohesión: Información de una clase coherente, estar relacionada con la clase  
 Bajo acoplamiento: Clases menos ligadas entre si. En caso de modificación, menor repercusión posible en el resto. + Reutilización - Dependencia 
      
-    - **S**: Single Responsability Principle (SRP)       
+    - **S**: Single Responsability Principle ([SRP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/SRP.txt))       
          
-    - **O**: Open/Closed Principle ([OCP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/OPC.txt))
+    - **O**: Open/Closed Principle ([OCP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/OPC.txt))
         
-    - **L**: Liskov substitution Principle ([LSP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/LSP.txt))       
+    - **L**: Liskov substitution Principle ([LSP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/LSP.txt))       
                  
-    - **I**: Interface Segregation Principle ([ISP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/ISP.txt))
+    - **I**: Interface Segregation Principle ([ISP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/ISP.txt))
        
-    - **D**: Dependency Inversion Principle ([DIP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/3.SOLID_PatronesDisenho/DIP.txt))       
+    - **D**: Dependency Inversion Principle ([DIP](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/DIP.txt))       
         
     Objetivo ppios SOLID: Código ordenado, legible y fácil de mantener. El código puede ser que aumente de tamaño, pero será de mejor calidad.
     Respetando estos principios se han desarrollado los patrones creacionales, estructurales y de comportamiento. 
@@ -155,7 +156,7 @@ Bajo acoplamiento: Clases menos ligadas entre si. En caso de modificación, menor
 Ahorro de tiempo. Validez de código. Uso de lenguaje común. Aplicaciones robustas, facilitan mantenimiento. Nos ayudan a cumplir muchos ppios SOLID, control de cohesión, acoplamiento, reutilizar código...   
 
 
-Bibliografía: Design Patterns. Gang of Four    
+**Bibliografía**: Design Patterns. Gang of Four    
 
 
 Objetivos: catálogos de elementos reusables, evitar la reiteración en la búsqueda de soluciones a problemas ya conocidos y solucionados, vocabulario común entre diseñadores, Estandarizar el modo en que se realiza el diseño, facilitar el aprendizaje  
@@ -163,57 +164,121 @@ No -> Imponer ciertas alternativas de diseño frente a otras.
 
 
 1. **Patrones creacionales** -> Creación de instancia. Encapsular y extraer dicha creación.  
-    -  Abstract Factory: Interfaz para crear familias de objetos relacionados o dependientes sin especificar sus clases concretas (sin especificarse directamente).                                
+    -  [Abstract Factory](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesCreacionales/AbstractFactory.gif): Interfaz para crear familias de objetos relacionados o dependientes sin especificar sus clases concretas (sin especificarse directamente).                                
 
-    -  Builder: Separa la construcción de un objeto complejo de su representación para que el mismo proceso de construcción pueda crear diferentes representaciones.                  
+    -  [Builder](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesCreacionales/Builder.gif): Separa la construcción de un objeto complejo de su representación para que el mismo proceso de construcción pueda crear diferentes representaciones.                  
 
-    - Factory Method: Define una interfaz para crear un objeto, pero deja que las subclases decidan de qué clase crear una instancia. Factory Method permite que una clase difiera la creación de instancias a subclases.
+    - [Factory Method](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesCreacionales/Factory.gif): Define una interfaz para crear un objeto, pero deja que las subclases decidan de qué clase crear una instancia. Factory Method permite que una clase difiera la creación de instancias a subclases.
       Flexibilidad para crear diferentes objetos. Va a haber una clase abstracta que puede proporcionar un obj predeterminado, pero cada subclase va a crear una instancia de una versión extendida del obj.                           
          
-    - Prototype: Especifica el tipo de objetos para crear utilizando una instancia prototípica (obj existentes del mismo tipo) y crea nuevos objetos copiando este prototipo.          
+    - [Prototype](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesCreacionales/Prototype.gif): Especifica el tipo de objetos para crear utilizando una instancia prototípica (obj existentes del mismo tipo) y crea nuevos objetos copiando este prototipo.          
  
-    - Singleton: Se asegura de que una clase tenga solo una instancia y proporciona un punto global de acceso a ella.             
+    - [Singleton](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesCreacionales/Singleton.gif): Se asegura de que una clase tenga solo una instancia y proporciona un punto global de acceso a ella.             
 
 
 **25/04/2021**  
 
 2. **Patrones estructurales** -> Cómo utilizar estructuras de datos complejas a partir de datos más simples. Crear interconexión entre objetos y que éstas relaciones no se vean afectadas por cambios en los requisitos del prog.
-    - Adapter: Convierte la interfaz de una clase en otra interfaz que los clientes esperan. El Adapter permite que las clases trabajen juntas y que no podrían hacerlo de otra manera debido a interfaces incompatibles.    
+    - [Adapter](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesEstructurales/adapter.gif): Convierte la interfaz de una clase en otra interfaz que los clientes esperan. El Adapter permite que las clases trabajen juntas y que no podrían hacerlo de otra manera debido a interfaces incompatibles.    
     
-    - Bridge: Desacopla una abstracción de su implementación para que los dos puedan variar independientemente.
+    - [Bridge](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesEstructurales/bridge.gif): Desacopla una abstracción de su implementación para que los dos puedan variar independientemente.
 
-    - Composite: Compone los objetos en estructuras de árbol para representar jerarquías enteras. Composite permite a los clientes tratar objetos individuales y composiciones de objetos de manera uniforme.
+    - [Composite](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesEstructurales/composite.gif): Compone los objetos en estructuras de árbol para representar jerarquías enteras. Composite permite a los clientes tratar objetos individuales y composiciones de objetos de manera uniforme.
 
-    - Decorator: Asigna responsabilidades adicionales a un objeto dinámica mente. Ofrecen una alternativa flexible a las subclases para extender la funcionalidad.
+    - [Decorator](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesEstructurales/decorator.gif): Asigna responsabilidades adicionales a un objeto dinámica mente. Ofrecen una alternativa flexible a las subclases para extender la funcionalidad.
 
-    - Facade: Proporciona una interfaz unificada a un conjunto de interfaces en un subsistema. Façade define una interfaz de nivel superior que hace que el subsistema sea más fácil de usar.
+    - [Facade](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesEstructurales/facade.gif): Proporciona una interfaz unificada a un conjunto de interfaces en un subsistema. Façade define una interfaz de nivel superior que hace que el subsistema sea más fácil de usar.
 
-    - Flyweight: Soporta una gran cantidad de objetos pequeños de manera eficiente.
+    - [Flyweight](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesEstructurales/flyweight.gif): Soporta una gran cantidad de objetos pequeños de manera eficiente.
 
-     - Proxy: Proporciona un sustituto o un marcador de posición para que otro objeto controle el acceso a él.
+     - [Proxy](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesEstructurales/proxy.gif): Proporciona un sustituto o un marcador de posición para que otro objeto controle el acceso a él.
 
 3. **Patrones de comportamiento** -> Especifican el comportamiento entre objetos del prog. Interacción y responsabilidades entre clases y objetos, y gestión de algoritmos que la encapsulan.
-    -  Chain of Responsability: Evita acoplar el remitente de una solicitud a su receptor, dándole a más de un objeto la oportunidad de manejar la solicitud. Encadena los objetos receptores y pasa la solicitud a lo largo de la cadena hasta que un objeto lo maneje.
+    -  [Chain of Responsability](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesComportamiento/chainResponsability.gif): Evita acoplar el remitente de una solicitud a su receptor, dándole a más de un objeto la oportunidad de manejar la solicitud. Encadena los objetos receptores y pasa la solicitud a lo largo de la cadena hasta que un objeto lo maneje.
 
-    -  Command: Encapsula una solicitud como un objeto, lo que le permite parametrizar a los clientes con diferentes solicitudes, solicitudes de cola o de registro y admite operaciones que no se pueden deshacer.
+    -  [Command](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesComportamiento/command.gif): Encapsula una solicitud como un objeto, lo que le permite parametrizar a los clientes con diferentes solicitudes, solicitudes de cola o de registro y admite operaciones que no se pueden deshacer.
 
-    -  Interpreter: Dado un lenguaje, define una representación para su gramática junto con un intérprete que usa la representación para interpretar sentencias en el idioma.
+    -  [Interpreter](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesComportamiento/interpreter.gif): Dado un lenguaje, define una representación para su gramática junto con un intérprete que usa la representación para interpretar sentencias en el idioma.
 
-    -  Iterator: Proporciona una forma de acceder a los elementos de un objeto agregado de forma secuencial sin exponer su representación subyacente.
+    -  [Iterator](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesComportamiento/iterator.gif): Proporciona una forma de acceder a los elementos de un objeto agregado de forma secuencial sin exponer su representación subyacente.
 
-    -  Mediator: Define un objeto que encapsula cómo interactúa un conjunto de objetos. El Mediator promueve el bajo acoplamiento evitando que los objetos se refieran entre sí explícitamente, y le permite variar su interacción de forma independiente.
+    -  [Mediator](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesComportamiento/mediator.gif): Define un objeto que encapsula cómo interactúa un conjunto de objetos. El Mediator promueve el bajo acoplamiento evitando que los objetos se refieran entre sí explícitamente, y le permite variar su interacción de forma independiente.
  
-    -  Memento: Sin violar la encapsulación, captura y externaliza el estado interno de un objeto para que el objeto pueda restaurarse a este estado más adelante.
+    -  [Memento](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesComportamiento/memento.gif): Sin violar la encapsulación, captura y externaliza el estado interno de un objeto para que el objeto pueda restaurarse a este estado más adelante.
 
-    -  Observer: Define una dependencia de uno a muchos entre los objetos para que cuando un objeto cambie de estado, todos los objetos que dependan de él sean notificados y actualizados automáticamente.
+    -  [Observer](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesComportamiento/observer.gif): Define una dependencia de uno a muchos entre los objetos para que cuando un objeto cambie de estado, todos los objetos que dependan de él sean notificados y actualizados automáticamente.
 
-    -  State: Permite que un objeto altere su comportamiento cuando cambia su estado interno. El objeto aparecerá para cambiar su clase.
+    -  [State](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesComportamiento/state.gif): Permite que un objeto altere su comportamiento cuando cambia su estado interno. El objeto aparecerá para cambiar su clase.
  
-    -  Strategy: Define una familia de algoritmos, encapsula cada uno de ellos y los hace intercambiables entre sí. Strategy permite que el algoritmo varíe independientemente de los clientes que lo utilizan.
+    -  [Strategy](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesComportamiento/strategy.gif): Define una familia de algoritmos, encapsula cada uno de ellos y los hace intercambiables entre sí. Strategy permite que el algoritmo varíe independientemente de los clientes que lo utilizan.
 
-    -  Template Method: Define el esqueleto de un algoritmo en una operación, aplazando algunos pasos a las subclases. Template Method permite a las subclases redefinir ciertos pasos de un algoritmo sin cambiar la estructura del algoritmo.
+    -  [Template Method](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesComportamiento/templateMethod.gif): Define el esqueleto de un algoritmo en una operación, aplazando algunos pasos a las subclases. Template Method permite a las subclases redefinir ciertos pasos de un algoritmo sin cambiar la estructura del algoritmo.
 
-    -  Visitor: Representa una operación a realizar en los elementos de una estructura de objeto. Visitor le permite definir una nueva operación sin cambiar las clases de los elementos sobre los que opera.
+    -  [Visitor](https://github.com/MartaFonde/Cursos_c/blob/master/CarreraC%2B%2B/Apuntes/3.SOLID_PatronesDisenho/patronesComportamiento/visitor.gif): Representa una operación a realizar en los elementos de una estructura de objeto. Visitor le permite definir una nueva operación sin cambiar las clases de los elementos sobre los que opera.
 
 - **Antipatrones de diseño**  
 
+***
+
+**26/04/2021**
+### 4. INTRODUCCIÓN A C++ ###
+
+- Alto rendimiento: 
+  - Velocidad en ejecución y uso eficiente de la memoria (RAM, registros, caché, disco duro, ...)
+  - Lenguaje compilado
+  - Llamadas directas a SO y SDKs
+  - Múltiples parámetros de optimización
+  - Acceso directo a la memoria. Control de gestión de la memoria.
+  - Integración directa con el lenguaje ensamblador 
+- Multiplataforma. Compilación por plataforma -> adaptación con cambio de algunos parámetros (llamadas SO)
+- Depuración complicada (al tener control de SO, memoria, ..., dificultad compiladores para mostrar errores)
+ 
+**Generación ejecutable**
+- Preprocesador -> Interpreta directivas # (Macros, includes, ...) y genera código fuente     
+     #include copia y pega en cualquier parte del código lo que tenga .hpp (p.ej } )
+        int main(){
+        #include "llave.hpp"
+- Compilador -> Generación de código objeto (binario)   
+    \>g++ -c -Wall holamundo.cpp --> holamundo.o    
+- Linker -> Combinación de los módulos generados por compilador y módulos externos (librerías) para generar un ejecutable o librería  
+    \>g++ -o hola.exe holamundo.o
+
+
+**Tipos básicos**: bool, char, wide char, int, double, float, enum, int the_array[]  
+Punteros: int *pEntero = &entero  
+Sólo los char tienen tamaño fijo (1byte). El resto depende de la implementación (compilación, plataforma, arquitectura, ... )
+
+Modificadores:
+- Unsigned: el valor no puede ser negativo.
+- Signed: Sirve únicamente para char (por defecto el resto ya son).
+- Short: Valor entero que es mayor o igual que char y menor o igual a int.
+- Long: Valor entero que es mayor o igual a int.
+- Const: Variables que no pueden cambiar su valor durante la ejecución del programa.
+- Static: Variables que mantienen su valor aunque su scope haya acabado.
+- Volatile: Herramienta que le dice al compilador que la variable puede cambiar su valor durante la ejecución (No puede ser optimizado).
+
+Scope: Vida que tiene una variable. 
+El scope de cualquier variable es dependiente del bloque en el que se encuentre.
+
+    int a = 5;
+    {
+        int b = 4;
+        a = b   //ok
+    }
+    a = b   //falla: b no está declarada
+
+Conversiones:
+- int a = static_cast<int>(5.54);  
+- const_cast -> Quitar/añadir el modificador const a una variable (!!puede dar un valor indefinido si la variable original era const)  
+- dynamic_cast<tipo>() -> Polimorfismo
+- reinterpret_cast<tipo>() [ == int y=(int)x] -> Conversión a un tipo cualquiera (= valor reconvirtiendo si tipos = tamaño)
+
+Creación de un tipo (using ó typedef): 
+using ulong = unsigned long int;   
+typedef unsigned long int ulong;
+
+Mapa de bits -> #include <bitset>
+~ , & , | , ^ , >> , <<
+
+
+**Estructuras de control**:
