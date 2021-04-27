@@ -223,3 +223,63 @@ No -> Imponer ciertas alternativas de diseño frente a otras.
 **26/04/2021**
 ### 4. INTRODUCCIÓN A C++ ###
 
+- Alto rendimiento: 
+  - Velocidad en ejecución y uso eficiente de la memoria (RAM, registros, caché, disco duro, ...)
+  - Lenguaje compilado
+  - Llamadas directas a SO y SDKs
+  - Múltiples parámetros de optimización
+  - Acceso directo a la memoria. Control de gestión de la memoria.
+  - Integración directa con el lenguaje ensamblador 
+- Multiplataforma. Compilación por plataforma -> adaptación con cambio de algunos parámetros (llamadas SO)
+- Depuración complicada (al tener control de SO, memoria, ..., dificultad compiladores para mostrar errores)
+ 
+**Generación ejecutable**
+- Preprocesador -> Interpreta directivas # (Macros, includes, ...) y genera código fuente     
+     #include copia y pega en cualquier parte del código lo que tenga .hpp (p.ej } )
+        int main(){
+        #include "llave.hpp"
+- Compilador -> Generación de código objeto (binario)   
+    \>g++ -c -Wall holamundo.cpp --> holamundo.o    
+- Linker -> Combinación de los módulos generados por compilador y módulos externos (librerías) para generar un ejecutable o librería  
+    \>g++ -o hola.exe holamundo.o
+
+
+**Tipos básicos**: bool, char, wide char, int, double, float, enum, int the_array[]  
+Punteros: int *pEntero = &entero  
+Sólo los char tienen tamaño fijo (1byte). El resto depende de la implementación (compilación, plataforma, arquitectura, ... )
+
+Modificadores:
+- Unsigned: el valor no puede ser negativo.
+- Signed: Sirve únicamente para char (por defecto el resto ya son).
+- Short: Valor entero que es mayor o igual que char y menor o igual a int.
+- Long: Valor entero que es mayor o igual a int.
+- Const: Variables que no pueden cambiar su valor durante la ejecución del programa.
+- Static: Variables que mantienen su valor aunque su scope haya acabado.
+- Volatile: Herramienta que le dice al compilador que la variable puede cambiar su valor durante la ejecución (No puede ser optimizado).
+
+Scope: Vida que tiene una variable. 
+El scope de cualquier variable es dependiente del bloque en el que se encuentre.
+
+    int a = 5;
+    {
+        int b = 4;
+        a = b   //ok
+    }
+    a = b   //falla: b no está declarada
+
+Conversiones:
+- int a = static_cast<int>(5.54);  
+- const_cast -> Quitar/añadir el modificador const a una variable (!!puede dar un valor indefinido si la variable original era const)  
+- dynamic_cast<tipo>() -> Polimorfismo
+- reinterpret_cast<tipo>() [ == int y=(int)x] -> Conversión a un tipo cualquiera (= valor reconvirtiendo si tipos = tamaño)
+
+Creación de un tipo (using ó typedef): 
+using ulong = unsigned long int;   
+typedef unsigned long int ulong;
+
+Mapa de bits -> #include <bitset>
+~ , & , | , ^ , >> , <<
+
+
+**Estructuras de control**:
+
