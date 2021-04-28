@@ -155,8 +155,13 @@
     <Image Include="3.SOLID_PatronesDisenho\Prototype.gif" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="bucles.cpp" />
+    <ClCompile Include="ficheros.cpp" />
+    <ClCompile Include="funciones.cpp" />
+    <ClCompile Include="if_else.cpp" />
     <ClCompile Include="modificadores.cpp" />
     <ClCompile Include="otras_funcionalidades.cpp" />
+    <ClCompile Include="pointer_function.cpp" />
     <ClCompile Include="tipos_size_parte1.cpp" />
     <ClCompile Include="tipos_size_parte2.cpp" />
   </ItemGroup>
