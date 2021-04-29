@@ -1,4 +1,4 @@
-[CARRERA: PROGRAMADOR ++ ](https://openwebinars.net/carreras/programador-cpp/)
+[CARRERA: PROGRAMADOR C++ ](https://openwebinars.net/carreras/programador-cpp/)
 
 OpenWebinars 
 
@@ -33,8 +33,7 @@ OpenWebinars
 El curso incluye varias hojas de ejercicios para realizar con pseudocódigo e 
 introducirse en la práctica de entrada y salida de información, estructuras 
 alternativas y repetitivas, arrays y funciones y procedimientos. 
-Dado que son ejercicios muy sencillos  (y muchos ya están subidos en los 
-primeros repositorios que he subido aquí), no los haré pero subiré los enunciados.
+Dado que son ejercicios muy sencillos, no los haré pero subiré los enunciados.
 
 ---
 ### 2. INTRODUCCIÓN A LAS ESTRUCTURAS DE DATOS ###
@@ -218,6 +217,8 @@ No -> Imponer ciertas alternativas de diseño frente a otras.
 
 - **Antipatrones de diseño**  
 
+[reposGithub](https://github.com/cdiazal/SOLID_Patterns)
+
 ***
 
 **26/04/2021**
@@ -343,8 +344,8 @@ C++11
     }
 
 
-**Organización del código**
-Declaraciones de funciones
+**Organización del código**  
+Declaraciones de funciones  
 - Ficheros aparte: Utilización de las mismas funciones en diferentes módulos de compilación.
 - Fichero con código fuente y fichero de cabecera(header)
 - Separación de la declaración y la definición.
@@ -362,11 +363,26 @@ Tipos de ficheros
     - Declaración de templates 
     - Declaración de variables globales (evitarlas)
     
-Unidades de compilación
-    - Por cada fichero .cpp se crea un fichero objeto compilado.
-    - Se realiza la compilación una vez “expandido” el código de los ficheros incluidos con la directivas de preprocesador. 
-    - Las cabeceras contenidas en un determinado fichero se pre-procesan y compilan. (stdafx) 
-        - Evitar cabeceras cambiantes o poco utilizadas. 
+Unidades de compilación  
+- Por cada fichero .cpp se crea un fichero objeto compilado.  
+- Se realiza la compilación una vez “expandido” el código de los ficheros incluidos con la directivas de preprocesador.   
+- Las cabeceras contenidas en un determinado fichero se pre-procesan y compilan. (stdafx) 
+    - Evitar cabeceras cambiantes o poco utilizadas. 
 
 [reposGitHub](https://github.com/OpenWebinarsNet/openwebinars_cpp_fundamentos)
 
+
+***
+
+**29/04/2021**
+
+### 5. CURSO DE GIT ###
+
+- Control versiones de código **distribuido**.
+- Funcionalidad distribuida. No depende de un repositorio central (SVN) ni de la red.
+- Ramas -> divergencia respecto al flujo principal de funcionalidad. +Control
+- Merges: fusión.
+- Todo el flujo temporal en local.
+- Estados: Modificado (untracked) -> Preparado (staged) -> Confirmado (commited)
+
+Herramientas: TkDIFF, gitlab
