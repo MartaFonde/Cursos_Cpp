@@ -228,6 +228,7 @@ No -> Imponer ciertas alternativas de diseño frente a otras.
   - Lenguaje compilado
   - Llamadas directas a SO y SDKs
   - Múltiples parámetros de optimización
+  - Programación genérica: Templates
   - Acceso directo a la memoria. Control de gestión de la memoria.
   - Integración directa con el lenguaje ensamblador 
 - Multiplataforma. Compilación por plataforma -> adaptación con cambio de algunos parámetros (llamadas SO)
@@ -247,6 +248,8 @@ No -> Imponer ciertas alternativas de diseño frente a otras.
 **Tipos básicos**: bool, char, wide char, int, double, float, enum, int the_array[]  
 Punteros: int *pEntero = &entero  
 Sólo los char tienen tamaño fijo (1byte). El resto depende de la implementación (compilación, plataforma, arquitectura, ... )
+
+**27/04/2021**
 
 Modificadores:
 - Unsigned: el valor no puede ser negativo.
@@ -281,5 +284,89 @@ Mapa de bits -> #include <bitset>
 ~ , & , | , ^ , >> , <<
 
 
+**28/04/2021**
+
 **Estructuras de control**:
+if/else , switch, ternarias  
+bucles  
+ficheros
+
+**Funciones**  
+- Parámetros y valores de retorno.   
+
+        void ejemplo (int valor,
+              int& referencia,
+              int *puntero);
+              
+        void ejemplo2(const int valor,
+                      const int& referencia,
+                      const int *puntero);
+
+        void ejemplo3(int fijo,
+                      int defecto=0);
+
+
+- Sobrecarga y static  
+El modificador static indica que la variable no está asociada al scope y se mantendrá durante toda la ejecución del programa.
+
+- Punteros a funciones
+
+C++03 (tipo de retorno (nombre de variable)(tipo de parametros))
+
+    void f()
+    {
+        cout << "hola";
+    }
+
+    int main()
+    {
+        void (*my_function)();
+        my_function = &f;
+
+        my_function();
+    }
+
+C++11
+
+    #include <functional>
+
+    void f()
+    {
+        cout << "hola";
+    }
+
+    int main()
+    {
+        std::function<void()> my_function = &f;
+
+        my_function();
+    }
+
+
+**Organización del código**
+Declaraciones de funciones
+- Ficheros aparte: Utilización de las mismas funciones en diferentes módulos de compilación.
+- Fichero con código fuente y fichero de cabecera(header)
+- Separación de la declaración y la definición.
+
+Tipos de ficheros
+- Ficheros de definiciones: .cpp, .mm, etc
+    - Incluyen ficheros de cabecera 
+    - Definición de funciones
+    - Definición de variables globales(evitarlas)
+    - Son las unidades de compilación
+
+- Ficheros de declaraciones o cabecera (headers): .hpp, .h 
+    - Declaración de funciones. 
+    - Declaración de tipos nuevos: clases y estructuras, etc...
+    - Declaración de templates 
+    - Declaración de variables globales (evitarlas)
+    
+Unidades de compilación
+    - Por cada fichero .cpp se crea un fichero objeto compilado.
+    - Se realiza la compilación una vez “expandido” el código de los ficheros incluidos con la directivas de preprocesador. 
+    - Las cabeceras contenidas en un determinado fichero se pre-procesan y compilan. (stdafx) 
+        - Evitar cabeceras cambiantes o poco utilizadas. 
+
+[reposGitHub](https://github.com/OpenWebinarsNet/openwebinars_cpp_fundamentos)
 
