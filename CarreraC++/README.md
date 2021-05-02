@@ -386,3 +386,98 @@ Unidades de compilación
 - Estados: Modificado (untracked) -> Preparado (staged) -> Confirmado (commited)
 
 Herramientas: TkDIFF, gitlab
+
+git init 
+git add readme.md / add .
+git commit -m "tag"
+git difftool -> dif visual
+
+.gitignore -> *.tmp
+Al eliminar fichero ignorado = status. Git no lo ve.
+
+**2/05/2021**  
+git status
+
+Eliminar fichero: git rm readme.md (Eliminar ficheros ignorados no hace nada)
+Renombrar/Mover archivo: git mv readme2.md readme3.md -> pasa el fich al area de staged
+
+Cualquier movimiento implica que tiene que estar desplazado lo que hagamos en el area de staged y posteriormente en commit
+mv -> Borra fich y aparece fich nuevo
+mv -> add
+
+git log --oneline -> ver commits (revisiones) hash id + tag. --oneline Info resumida 
+(HEAD -> master) puntero a un hash id revisión + actual -> HEAD  
+Rango divisiones podemos indicar HEAD  y -3 hacia atrás  
+git log --pretty=format:"%h %an %ar - %s" [funciona sin format]  
+git show 7651c55 -> fich que hay en una revisión (cambios realizados)  
+
+git diff -> compara lo que hay en working directory y commit
+git diff --staged -> compara working directory con staged (staged == cached)
+
+Clonar repositorio github  
+(1º git init)
+git remote add origin https://github.com/sharkdp/bat  
+git fetch origin -> recupera lo que hay en origin (muestra información versiones)  
+git pull origin master -> descarga origin a mi master
+git branch -v -a -> ramas disponibles  
+
+origin: nombre que le damos como norma a la referencia de repos remoto
+
+git log --oneline:
+(origin/master) de la fuente con la que me he conectado
+master -> en mi equipo  
+git push
+
+git clone url . (. -> en path actual, si no crea un dir) init, fetch y pull implícitos 
+
+git push origin master: para subir proy con cambios -> introducir credenciales
+
+Deshacer cambios:  
+git checkout master : Commit -> working directory  
+
+git checkout -- nombreArchivo (ó . q reemplaza todo) -> traer de la revisión X los fich indicados al path actual  
+p.ej. git checkout HEAD(o id hash o tag) fichero  
+git checkout HEAD~1 fichero  -> un menos que el que está arriba  
+git checkout HEAD -- . -> recupera todo de la ult versión
+
+git reset : Staged -> working directory  
+git reset HEAD file3
+
+Si el fich está en staged o en commit lo podemos recuperar. Si está en working directory no
+
+git reset --hard -> 1º trae de commit a working dir la versión indicada 2º todo lo que estea en staged lo borra  
+git reset --hard HEAD~1 -> trae la versión anterior a HEAD
+
+git revert id -> elegimos que fich revertir
+git revert HEAD...HEAD~2 --no-edit -> rango. Aplica todo (no elección de fich)
+
+**Ramas**  
+Establecer líneas de desarrollo divergentes que parten de la versión del código en rama principal  
+Experimentos, nueva funcionalidad... si se aprueba podemos fusionar código completo  
+
+git branch -> ver ramas 
+git branch -a -v -> con ramas remotas + info rama (últ commit)
+git branch nuevaRama ramaOrigen   
+git checkout nombreRama -> cambio a rama
+
+git merge nuevaRama ramaPpal -> conmuto/fusiona. Aplica cambios de nuevaRama a Ppal. Elimina lo que había en Ppal (= contenido en ambas ramas)  
+
+git branch -d nuevaRama -> elimina rama  
+
+git checkout -b newRama -> crea y nos posiciona en nuevaRama  
+
+git diff HEAD HEAD~2 -> rango
+
+git log -p -n 2 -> aprobaciones versiones + diff + autoria + fecha. -n 2 dos cambios hacia atrás  
+git log --since="2 weeks ago" --until="2 days ago"  
+
+**git blame**
+Filtra autoría de quien ha hecho cambios.
+git log -n 15 --oneline -> últimos 15 cambios
+git blame scr/output.rs -> autores de commits en el archivo
+git blame -L 6,8 scr/output.rs -> autores que han tocado líneas 6 y 8  
+
+**Cherry Picking**  
+(Picotear) commits individuales >  detallistas acerca que cuáles de esos commits queremos unir / merge.  
+git cherry-pick origin/master 5d5bf61 -> Merge de un commit concreto
+git cherry-pick --continue
