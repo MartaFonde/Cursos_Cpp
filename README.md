@@ -457,6 +457,53 @@ git log --since="2 weeks ago" --until="2 days ago"
 
 git blame Filtra autoría de quien ha hecho cambios. git log -n 15 --oneline -> últimos 15 cambios git blame scr/output.rs -> autores de commits en el archivo git blame -L 6,8 scr/output.rs -> autores que han tocado líneas 6 y 8
 
-Cherry Picking
+**Cherry Picking**
 (Picotear) commits individuales > detallistas acerca que cuáles de esos commits queremos unir / merge.
 git cherry-pick origin/master 5d5bf61 -> Merge de un commit concreto git cherry-pick --continue
+
+**3/05/2021**  
+**Git rebase**
+Reestructurar commits y asegurarnos de que son comprensibles antes de subir/push los cambios.  
+Condensar varios commits (p. ej commits + antiguos)  Sanear histórico de los proj
+Recomendación: Sólo deberíamos hacer rebase de commits que no hayamos compartido con otras personas vía push. El proceso de rebasing de commits provoca que los hash_id commit-ids cambien, lo cual puede resultar en pérdida de commits futuros.  
+
+$ git rebase --interactive --root -> interactive carga pantalla para indicar que commits condenso. root desde donde empiezo a hacer el rebase (1er commit)  
+$ git rebase --interactive HEAD HEAD~4 -> rango  
+
+pick -> commit que se queda  
+squash -> Condensado 
+reword -> reeditar msg de commit  
+
+**Etiquetas**  
+Cambios incorporados en versión. 
+- Ligeras: $ git tag v1.4-lw  ->  puntero a un commit especifico.
+- Anotadas:  $ git tag -a v1.5 -m "Esta es la versión 1.5" -> obj entero. +info
+
+$ git show v1.5  
+
+**Movernos entre commits**  
+Recuperar un commit específico y volver a trabajar con él.  
+$ git commit --amend -> Enmendar desde staged fich no incluidos en commit. Movemos puntero hacia atrás y luego hacia delante (elimina commit enmendado)  
+
+$ git checkout id  -> commit antiguo
+$ git checkout -b solo_readme -> nueva rama desde un estado del tiempo  
+$ git branch -v -a -> ver ramas  
+
+$ checkout -> movernos a un puntero en el tiempo y generar todo el contenido  
+$ git checkout -b -> nueva rama  
+$ git checkout nombreRama -> desplazarnos entre ramas  
+
+**Git stash**  
+Copia/foto que nos permite almacenar temporalmente lo que tengamos en staged  
+$ git stash 
+$ git rm README.md 
+$ echo "aa" > README.md
+$ git stash apply -> intenta recuperar lo que había. Conflicto. Escogemos lo que permanece. 
+$ git add README.md -> escogemos último creado  
+
+
+**Repositorios Corporativos** 
+GitHub y GitLab -> servicios de hosting para Git. **GitLab** además, es software para descargar en local.  
+
+**DevOps**  
+Colaboración entre equipos. Mantener flujo de despliegue e integración continua.  
