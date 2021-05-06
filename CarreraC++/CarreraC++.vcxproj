@@ -159,6 +159,7 @@
     <ClCompile Include="ficheros.cpp" />
     <ClCompile Include="funciones.cpp" />
     <ClCompile Include="if_else.cpp" />
+    <ClCompile Include="memoria.cpp" />
     <ClCompile Include="modificadores.cpp" />
     <ClCompile Include="otras_funcionalidades.cpp" />
     <ClCompile Include="pointer_function.cpp" />

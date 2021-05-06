@@ -387,10 +387,10 @@ Unidades de compilación
 
 Herramientas: TkDIFF, gitlab
 
-$ git init 
-$ git add readme.md / add .
-$ git commit -m "tag"
-$ git difftool -> dif visual
+$ git init  
+$ git add readme.md / add .  
+$ git commit -m "tag"  
+$ git difftool -> dif visual  
 
 .gitignore -> *.tmp
 Al eliminar fichero ignorado = status. Git no lo ve.
@@ -398,8 +398,10 @@ Al eliminar fichero ignorado = status. Git no lo ve.
 **2/05/2021**    
 $ git status
 
-Eliminar fichero: $ git rm readme.md (Eliminar ficheros ignorados no hace nada)
-Renombrar/Mover archivo: $ git mv readme2.md readme3.md -> pasa el fich al area de staged
+Eliminar fichero:  
+$ git rm readme.md (Eliminar ficheros ignorados no hace nada)  
+Renombrar/Mover archivo:  
+$ git mv readme2.md readme3.md -> pasa el fich al area de staged
 
 Cualquier movimiento implica que tiene que estar desplazado lo que hagamos en el area de staged y posteriormente en commit
 mv -> Borra fich y aparece fich nuevo
@@ -455,8 +457,8 @@ $ git revert HEAD...HEAD~2 --no-edit -> rango. Aplica todo (no elección de fich)
 Establecer líneas de desarrollo divergentes que parten de la versión del código en rama principal  
 Experimentos, nueva funcionalidad... si se aprueba podemos fusionar código completo  
 
-$ git branch -> ver ramas 
-$ git branch -a -v -> con ramas remotas + info rama (últ commit)
+$ git branch -> ver ramas  
+$ git branch -a -v -> con ramas remotas + info rama (últ commit)  
 $ git branch nuevaRama ramaOrigen   
 $ git checkout nombreRama -> cambio a rama
 
@@ -472,14 +474,14 @@ $ git log -p -n 2 -> aprobaciones versiones + diff + autoria + fecha. -n 2 dos c
 $ git log --since="2 weeks ago" --until="2 days ago"  
 
 **git blame**
-Filtra autoría de quien ha hecho cambios.
-$ git log -n 15 --oneline -> últimos 15 cambios
-$ git blame scr/output.rs -> autores de commits en el archivo
+Filtra autoría de quien ha hecho cambios.  
+$ git log -n 15 --oneline -> últimos 15 cambios  
+$ git blame scr/output.rs -> autores de commits en el archivo  
 $ git blame -L 6,8 scr/output.rs -> autores que han tocado líneas 6 y 8  
 
 **Cherry Picking**  
 (Picotear) commits individuales >  detallistas acerca que cuáles de esos commits queremos unir / merge.  
-$ git cherry-pick origin/master 5d5bf61 -> Merge de un commit concreto
+$ git cherry-pick origin/master 5d5bf61 -> Merge de un commit concreto  
 $ git cherry-pick --continue
 
 **3/05/2021**  
@@ -516,16 +518,27 @@ $ git checkout nombreRama -> desplazarnos entre ramas
 
 **Git stash**  
 Copia/foto que nos permite almacenar temporalmente lo que tengamos en staged  
-$ git stash 
-$ git rm README.md 
+$ git stash  
+$ git rm README.md  
 $ echo "aa" > README.md
-$ git stash apply -> intenta recuperar lo que había. Conflicto. Escogemos lo que permanece. 
+$ git stash apply -> intenta recuperar lo que había. Conflicto. Escogemos lo que permanece.  
 $ git add README.md -> escogemos último creado  
 
 
-**Repositorios Corporativos** 
-GitHub y GitLab -> servicios de hosting para Git. **GitLab** además, es software para descargar en local.  
+**Repositorios Corporativos**  
+GitHub y GitLab -> servicios de hosting para Git.  GitLab, además, es software para descargar en local.  
 
 **DevOps**  
 Colaboración entre equipos. Mantener flujo de despliegue e integración continua.  
+
+***
+**06/05/2021**
+### Curso de Programación orientada a objetos con C++ ###
+**Memoria**
+- Stack
+- Heap
+
+**Punteros**  
+
+
 
