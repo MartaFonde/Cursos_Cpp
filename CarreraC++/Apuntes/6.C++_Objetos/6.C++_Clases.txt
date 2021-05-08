@@ -1,0 +1,40 @@
+3. CLASES
+Esencialmente son structs, pero en estas sus atributos son privados por defecto. 
+
+class MyClass
+{
+	public:
+		MyClass();//constructor
+	protected:
+		int m_id; //atributo pu
+	private:
+		string m_parent_name = “MyClass”; //atributo privado
+}
+
+Al igual que los structs, las clases se usan para encapsular conceptos 
+o crear nuestros propios tipos de datos que modelan ideas de nuestras 
+arquitecturas o del mundo real. 
+
+class Motor{}
+class Coche{
+	Motor m_motor;
+	void arrancar();          
+	Void parar();
+}
+
+Structs -> Empaquetar datos. Pueden tener funciones. POR DEFECTO ATB PUBLIC
+Class -> Empaquetar datos + tienen algún comportamiento . POR DEFECTO ATB PRIVATE
+Para el compilador son lo mismo. Modificadores de acceso =
+
+
+- Instancias 
+Las clases deben ser instanciados para poder ser usados. 
+
+MyClass mc; //crear una instancia en stack
+
+MyClass* mc = new Myclass(); // crear una instancia en heap
+delete mc; -> destructor
+
+En cualquiera de ellos se llama al constructor de la clase, 
+el cual es el método de la clase que se llama al instanciarse.
+ 

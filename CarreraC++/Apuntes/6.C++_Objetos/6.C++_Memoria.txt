@@ -1,0 +1,46 @@
+1. MEMORIA
+El stack es la memoria inmediata que esta enlazada al scope más inmediato,
+ya sea del programa o de una función por ejemplo.
+
+El heap es la memoría dinámica de la cual somos nosotros responsables de gestionar.
+memoria permanente durante la ejecución del programa
+
+Int  sa = 10;  
+int* ha = new int(10);// heap
+
+sa se destruye al final del scope
+ha se destruye implícitamente -> delete ha;
+
+Stack
+Acceso rapido
+No hace falta destruir variables implícitamente
+Solo variables locales
+El tamaño lo decide el OS
+Las variables tienen un tamaño fijo
+
+Heap
+Acceso global a variables
+No tiene limite de memoria
+Acceso lento (relativamente)
+La memoria se maneja manualmente
+Las variables pueden cambiar de tamaño
+
+
+PUNTEROS
+Son una base y característica de C++
+Variables que apuntan a otras variables (y/o secciones de memoria)
+Esenciales para memoria dinámica (heap)
+
+int* p = new int(10); //p, puntero a int; 
+delete p;
+
+new : reserva memoria en el heap y devuelve el puntero a esa memoria
+delete : libera la memoria reservada en la dirección del puntero
+
+- Operaciones
+++p: incrementa la dirección del puntero en 1
+--p  : decrementa la dirección del puntero en 1
+p += X: incrementa la dirección del puntero en X
+p -= X: decrementa la dirección del puntero en X
+p == p2: comprueba si dos punteros apuntan a la misma dirección (!=, lo contrario).
+*p:  indirección, acceso a la dirección donde apunta el puntero.

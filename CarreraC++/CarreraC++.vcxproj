@@ -159,12 +159,18 @@
     <ClCompile Include="ficheros.cpp" />
     <ClCompile Include="funciones.cpp" />
     <ClCompile Include="if_else.cpp" />
-    <ClCompile Include="memoria.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="memoria.hpp" />
     <ClCompile Include="modificadores.cpp" />
     <ClCompile Include="otras_funcionalidades.cpp" />
     <ClCompile Include="pointer_function.cpp" />
     <ClCompile Include="tipos_size_parte1.cpp" />
     <ClCompile Include="tipos_size_parte2.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="clases.hpp" />
+    <ClInclude Include="estructuras.hpp" />
+    <ClInclude Include="herencia.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

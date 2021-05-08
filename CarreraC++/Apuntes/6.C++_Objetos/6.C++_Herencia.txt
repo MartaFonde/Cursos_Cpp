@@ -1,0 +1,105 @@
+4. HERENCIA
+Heredar funcionalidad entre clases: Atributos y métodos public y protected.
+
+class Animal
+{
+	public:
+	string name;
+	virtual void animal_sound()
+	{
+		cout << "aaaa";
+	}; -> virtual funct que puede ser sobreescrita
+}
+
+class Cat : public Animal
+{
+	public:
+	string name;
+	void animal_sound() override	//virtual Vtables
+	{
+		cout << "miau";
+	}
+}
+
+Polimorfismo
+Animal a;
+a.animal_sound();
+Cat c;
+c.animal_sound(); //imprime "aaa" y "miau"
+Animal* pd =  &c;
+pd -> animal_sound();
+
+
+- Vtables (Virtual tables)
+	Internamente C++ crea unas tablas donde están almacenados 
+	los punteros a las funciones de los padres. En el caso de que se llame
+	a una función que no está implementada en la clase pero si en su padre, 
+	se busca en esa tabla y se llamará a la función del padre.
+
+	virtual -> almacena puntero a funct en una tabla. 
+	Cuando una clase hereda de otra clase base (con funct virtual) y está 
+	usando virtual sobre la  = funct sobreescribe el puntero a esa funct. 
+
+	- Override, protected, friend
+	Protected
+	Protected hace inaccesible los atributos y métodos hacia fuera de la clase,
+	pero deja acceso a los hijos si alguna clase hereda de ella.
+
+	class Padre
+	{
+		protected:
+			int m_value;
+	}
+
+	class Hijo : public Padre
+	{
+		void foo(){m_value = 10;} //OK
+	} 
+	Padre p; p.m_value //ERROR, no se puede acceder
+
+	Niveles de acceso cuando heredamos:
+	class Derived : public  Base;  // podemos acceder a atributos public y protected, no private
+	class Derived : protected Base;  // Atributos public -> protected, protected y private =
+	class Derived : private  Base;  //Public, protected -> private
+
+	Override
+	Indica que una función virtual sobreescribe otra función virtual.
+	De esta manera en la VTable,cuando se busque la función 
+	se accedera a la última indicada
+
+	Si la funct vitual no existe -> Error compilador.
+
+	Final 
+	Las funct virtuales que se han heredado si las sobreescribimos con final
+	a partir de ahí las funct que hereden no podrá sobreescribir más.
+	Base virtual A() 
+	D1 virtual A() final
+	D2 : D1 A() override -> Error
+
+	Friend (clases amigas con acceso a atributos PRIVATE Y PROTECTED)
+	Cuando hablamos de accesos, public, protected y private, 
+	se puede dar acceso externo a diferentes clases, funciones y 
+	operadores específicamente. De manera que se puede bloquear 
+	o garantizar el acceso a los atributos y funciones privados.
+
+	class A
+	{
+		private:
+			int m_value;
+		friend class B;
+	}
+
+	class B
+	{
+		void foo(A a){
+			cout << a.m_value;
+		}
+	}
+	
+- POLIMORFISMO
+	Es la cualidad por la que un objeto de una clase que hereda de otra 
+	puede ser usado como un objeto de la clase padre.
+	
+	class A;
+	class B : public A;
+	A* obj = new B();

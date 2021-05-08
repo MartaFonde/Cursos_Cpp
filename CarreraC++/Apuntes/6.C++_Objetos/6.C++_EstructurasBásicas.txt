@@ -1,0 +1,45 @@
+2. ESTRUCTURAS BÁSICAS
+- Structs
+Empaquetado de datos.
+Pueden tener constructor, destructor y métodos.
+Por defecto todos los atributos son públicos.
+
+struct MyStruct
+{
+	int m_value;
+}
+
+Son muy útiles para encapsular conceptos 
+o crear nuestros propios tipos de datos que modelan 
+ideas de nuestras arquitecturas.
+
+struct Motor{}
+struc Coche
+{
+	Motor m_motor;
+}
+
+struc Result
+{
+	bool successful;
+	int value;
+}
+
+- Unions
+Parecidos a los structs, pero sus atributos comparten el mismo espacio en memoria.
+Misma memoria pueda ser interpretado o permita el acceso como diversos tipos de datos.
+
+union u_type
+{
+	int val;		//4 bytes
+	char ch[4];			//char 1 byte
+}
+ byte 3 -> ch[3]
+ byte 2 -> ch[2]
+ byte 1 -> ch[1]
+ byte 0 -> ch[0]
+
+
+- Enum
+
+

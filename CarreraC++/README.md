@@ -378,7 +378,7 @@ Unidades de compilación
 
 ### 5. CURSO DE GIT ###
 
-- Control versiones de código **distribuido**.
+- Control versiones de código.
 - Funcionalidad distribuida. No depende de un repositorio central (SVN) ni de la red.
 - Ramas -> divergencia respecto al flujo principal de funcionalidad. +Control
 - Merges: fusión.
@@ -387,143 +387,26 @@ Unidades de compilación
 
 Herramientas: TkDIFF, gitlab
 
-$ git init  
-$ git add readme.md / add .  
-$ git commit -m "tag"  
-$ git difftool -> dif visual  
 
-.gitignore -> *.tmp
-Al eliminar fichero ignorado = status. Git no lo ve.
+**02/05/2021**   
+**ORGANIZACIÓN DEL CÓDIGO FUENTE Y OTROS ELEMENTOS DEL PROYECTO**     
+**Creación repositorio** : Git Init, Status, Add, Commit, Ignore  
+**Cambios**: Git diff. Histórico -> Git log , Show    
+**Trabajo en remoto**: Git Remote, Push, Pull   
+**Deshacer cambios**: Git Checkout, Reset, Reset Hard, Revert  
+**Reparar conflictos de unión con merge**: Git Merge  
 
-**2/05/2021**    
-$ git status
-
-Eliminar fichero:  
-$ git rm readme.md (Eliminar ficheros ignorados no hace nada)  
-Renombrar/Mover archivo:  
-$ git mv readme2.md readme3.md -> pasa el fich al area de staged
-
-Cualquier movimiento implica que tiene que estar desplazado lo que hagamos en el area de staged y posteriormente en commit
-mv -> Borra fich y aparece fich nuevo
-mv -> add
-
-$ git log --oneline -> ver commits (revisiones) hash id + tag. --oneline Info resumida 
-fter) puntero a un hash id revisión + actual -> HEAD  
-Rango divisiones podemos indicar HEAD  y -3 hacia atrás  
-$ git log --pretty=format:"%h %an %ar - %s" [funciona sin format]  
-$ git show 7651c55 -> fich que hay en una revisión (cambios realizados)  
-
-$ git diff -> compara lo que hay en working directory y commit
-$ git diff --staged -> compara working directory con staged (staged == cached)
-
-Clonar repositorio github  
-(1º $ git init)
-$ git remote add origin https://github.com/sharkdp/bat  
-$ git fetch origin -> recupera lo que hay en origin (muestra información versiones)  
-$ git pull origin master -> descarga origin a mi master
-$ git branch -v -a -> ramas disponibles  
-
-origin: nombre que le damos como norma a la referencia de repos remoto
-
-$ git log --oneline:
-(origin/master) de la fuente con la que me he conectado
-master -> en mi equipo  
-$ git push
-
-$ git clone url . (. -> en path actual, si no crea un dir) init, fetch y pull implícitos 
-
-$ git push origin master: para subir proy con cambios -> introducir credenciales
-
-Deshacer cambios:  
-$ git checkout master : Commit -> working directory  
-
-$ git checkout -- nombreArchivo (ó . q reemplaza todo) -> traer de la revisión X los fich indicados al path actual  
-p.ej. $ git checkout HEAD(o id hash o tag) fichero  
-$ git checkout HEAD~1 fichero  -> un menos que el que está arriba  
-$ git checkout HEAD -- . -> recupera todo de la ult versión
-
-$ git reset : Staged -> working directory  
-$ git reset HEAD file3
-
-Si el fich está en staged o en commit lo podemos recuperar. Si está en working directory no
-
-$ git reset --hard -> 1º trae de commit a working dir la versión indicada 2º todo lo que estea en staged lo borra  
-$ git reset --hard HEAD~1 -> trae la versión anterior a HEAD
-
-$ git revert id -> elegimos que fich revertir
-$ git revert HEAD...HEAD~2 --no-edit -> rango. Aplica todo (no elección de fich)
-
-**Ramas**  
-Establecer líneas de desarrollo divergentes que parten de la versión del código en rama principal  
-Experimentos, nueva funcionalidad... si se aprueba podemos fusionar código completo  
-
-$ git branch -> ver ramas  
-$ git branch -a -v -> con ramas remotas + info rama (últ commit)  
-$ git branch nuevaRama ramaOrigen   
-$ git checkout nombreRama -> cambio a rama
-
-$ git merge nuevaRama ramaPpal -> conmuto/fusiona. Aplica cambios de nuevaRama a Ppal. Elimina lo que había en Ppal (= contenido en ambas ramas)  
-
-$ git branch -d nuevaRama -> elimina rama  
-
-$ git checkout -b newRama -> crea y nos posiciona en nuevaRama  
-
-$ git diff HEAD HEAD~2 -> rango
-
-$ git log -p -n 2 -> aprobaciones versiones + diff + autoria + fecha. -n 2 dos cambios hacia atrás  
-$ git log --since="2 weeks ago" --until="2 days ago"  
-
-**git blame**
-Filtra autoría de quien ha hecho cambios.  
-$ git log -n 15 --oneline -> últimos 15 cambios  
-$ git blame scr/output.rs -> autores de commits en el archivo  
-$ git blame -L 6,8 scr/output.rs -> autores que han tocado líneas 6 y 8  
-
-**Cherry Picking**  
-(Picotear) commits individuales >  detallistas acerca que cuáles de esos commits queremos unir / merge.  
-$ git cherry-pick origin/master 5d5bf61 -> Merge de un commit concreto  
-$ git cherry-pick --continue
-
-**3/05/2021**  
-**Git rebase**
-Reestructurar commits y asegurarnos de que son comprensibles antes de subir/push los cambios.  
-Condensar varios commits (p. ej commits + antiguos)  Sanear histórico de los proj
-Recomendación: Sólo deberíamos hacer rebase de commits que no hayamos compartido con otras personas vía push. El proceso de rebasing de commits provoca que los hash_id commit-ids cambien, lo cual puede resultar en pérdida de commits futuros.  
-
-$ git rebase --interactive --root -> interactive carga pantalla para indicar que commits condenso. root desde donde empiezo a hacer el rebase (1er commit)  
-$ git rebase --interactive HEAD HEAD~4 -> rango  
-
-pick -> commit que se queda  
-squash -> Condensado 
-reword -> reeditar msg de commit  
-
-**Etiquetas**  
-Cambios incorporados en versión. 
-- Ligeras: $ git tag v1.4-lw  ->  puntero a un commit especifico.
-- Anotadas:  $ git tag -a v1.5 -m "Esta es la versión 1.5" -> obj entero. +info
-
-$ git show v1.5  
-
-**Movernos entre commits**  
-Recuperar un commit específico y volver a trabajar con él.  
-$ git commit --amend -> Enmendar desde staged fich no incluidos en commit. Movemos puntero hacia atrás y luego hacia delante (elimina commit enmendado)  
-
-$ git checkout id  -> commit antiguo
-$ git checkout -b solo_readme -> nueva rama desde un estado del tiempo  
-$ git branch -v -a -> ver ramas  
-
-$ checkout -> movernos a un puntero en el tiempo y generar todo el contenido  
-$ git checkout -b -> nueva rama  
-$ git checkout nombreRama -> desplazarnos entre ramas  
-
-**Git stash**  
-Copia/foto que nos permite almacenar temporalmente lo que tengamos en staged  
-$ git stash  
-$ git rm README.md  
-$ echo "aa" > README.md
-$ git stash apply -> intenta recuperar lo que había. Conflicto. Escogemos lo que permanece.  
-$ git add README.md -> escogemos último creado  
-
+**FLUJOS DE TRABAJO**  
+**Ramas**: Git Branch, Push <branch_name>, branch -d <branch_name>  
+**Autoría**: Git Blame  
+**"Picotear" commits**: Git cherry-pick   
+  
+**03/05/2021**  
+  
+**Reescribir commits**: Git rebase  
+**Etiquetas**: git tag  
+**Moverse entre estados**: git checkout <hash_id>  
+**Guardar estado**: git stash apply
 
 **Repositorios Corporativos**  
 GitHub y GitLab -> servicios de hosting para Git.  GitLab, además, es software para descargar en local.  
@@ -533,12 +416,27 @@ Colaboración entre equipos. Mantener flujo de despliegue e integración continua.
 
 ***
 **06/05/2021**
-### Curso de Programación orientada a objetos con C++ ###
+### 6. de Programación orientada a objetos con C++ ###
 **Memoria**
-- Stack
-- Heap
+- Stack: memoria inmediata que esta enlazada al scope más inmediato
+- Heap:memoría dinámica de la cual somos nosotros responsables de gestionar
 
-**Punteros**  
+Punteros:   
+Esenciales para memoria dinámica (heap)  
+Operaciones: ++ / -- / += / ==  
 
+**08/05/2021**  
+**Estructuras de datos**  
+Struct  
+Union  
+Enum Class  
+Class  
 
+**Herencia**  
+Vtables    
+Modificadores    
+Polimorfismo  
 
+*** 
+
+### 7. Programación genérica y concurrente con C++ ### 
