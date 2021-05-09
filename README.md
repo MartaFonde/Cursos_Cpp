@@ -455,8 +455,8 @@ Prog. concurrente:
 No comparten memoria.  
 Cada uno tiene su propio stack y su propio heap
 
-
-###  Patrones e interfaces en c++ ###
+***
+### 8. Patrones e interfaces en c++ ###
 - **STL**  
 Librería estándar de C++ 
 Framework extensible para manejo de datos en programas C++ 
