@@ -78,6 +78,42 @@
     <ClCompile Include="main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="mainMacros.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="mainTemplates.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="mainThreads.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="mainProcess.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="pruebas.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\basic_array_example.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\deque_example.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\list_example.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\main_STL.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\map_example.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\set_example.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\vector_example.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="estructuras.hpp">
@@ -87,6 +123,24 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="herencia.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="macros.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="threads_workers.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="listaEnlazadaGenerica_templates.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="singleton_templates.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\smart_pointer.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\stl_examples.hpp">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

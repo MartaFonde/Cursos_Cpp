@@ -1,0 +1,80 @@
+STL
+
+Librería estándar de C++ 
+Framework extensible para manejo de datos en programas C++ 
+Diseñada por Alex Stepanov 
+La representación más genérica, más eficiente y  más flexible de conceptos (ideas, algoritmos)
+
+Tareas comunes
+Guardar datos en contenedores 
+Organizar los datos 
+Alcanzar los elementos 
+Añadir 
+Quitar 
+Ordenar y buscar 
+Operaciones numéricas simples
+
+Ventajas: Estándar, Multiplataforma, Eficiencia
+Desventajas: Uso específico
+-------
+Stl es la librería estándar de C++. Su intención es representar la forma más genérica, eficiente 
+y flexible los diferentes conceptos, ideas o algoritmos.
+Las tareas más comunes que proporciona es el guardado y la organización de los datos, así como 
+añadirlos, alcanzarlos, quitarlos, ordenarlos y buscarlos.
+También proporciona diferentes operaciones númericas.
+
+Las ventajas de usar la librería estándar son:
+    Funciona en cualquier plataforma
+    Está optimizado para que sea eficiente
+    Es estándar.
+La mayor desventaja es que está hecho para propósito general, y para un uso específico y detallado 
+en el que no se necesiten hacer todas las comprobaciones, impide que la eficiencia sea mejor.
+--------
+https://users.cs.northwestern.edu/~riesbeck/programming/c++/stl-summary.html
+
+- CONTENEDORES SECUENCIALES
+Los contenedores son estructuras de datos que sirven para guardar los datos de una forma específica.
+Utilizan programación genérica TEMPLATES
+
+La librería estándar de C++ nos proporciona varios tipos de los que podemos hacer una distinción, secuenciales 
+y asociativos, veamos primero los secuenciales:
+
+Secuenciales: Los datos se guardan secuencialmente:
+	Array: el tamaño es fijo y no puede ser cambiado. 
+		Se guarda en direcciones de memoria contiguas.
+	Vector: array expansible que puede reducir o ampliar su tamaño. 
+		Insercción y borrado en el medio costoso.
+	    Es un template, por eso hay que especificar vector<tipo> nombreVector
+	Lista: lista doblemente enlazada, 
+		Rápida inserción y borrado. Lento acceso aleatorio.
+		No podemos usar for de rango para recorrerlo. Operador [] no está sobrecargado
+	Deque: es una cola con final doble. 
+		Inserción y borrado al principio y al final. Compromiso entre lista 
+		y vector.
+	Otros: hay algunos tipos más como stack o queue.
+
+Más recomendado: VECTOR. Inserción y borrado en el medio -> Lista
+Una página que podéis visitar para saber todos los tipos y su eficiencia es -> 
+
+
+- CONTENEDORES ASOCIATIVOS
+Usa el acceso a elementos por clave.
+    Set: Guarda un número de elementos que auto contiene la clave.  
+		Son ordenados los elementos por la clave
+    Map: Guarda una pareja de objetos (clave, valor).
+		Parecido a un array (Clave en vez de índice)
+    Multimap y multiset: Permiten duplicados de la clave.
+
+- ITERADORES  ---patrón comportamiento
+Los iteradores son punteros para acceder individualmente a los elementos
+de un contenedor (secuenciales o asociativos)
+Puedes iterar secuencialmente por un contenedor con ellos.
+Los contenedores tienen las funciones begin() y end() 
+	Devuelven un iterador a la primera y última posición respectivamente. 
+
+std::vector<int>::iterator it;
+Ver cpp vector y map
+
+- SMART POINTERS
+
+- LIBRERÍAS

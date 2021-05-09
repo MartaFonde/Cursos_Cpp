@@ -439,4 +439,42 @@ Polimorfismo
 
 *** 
 
+**09/05/2021**  
+
 ### 7. Programación genérica y concurrente con C++ ### 
+Prog. genérica:
+- **Macros**  -> Directivas de preprocesado. Sustituir código. Prog condicional
+- **Templates** -> Generar/Expandir código en tiempo de compilación. No dependiente de tipos o valores.
+
+Prog. concurrente:
+- **Threads**  -> Hilos de ejecución lógicos. Comparten la misma memoria aunque tienen su propio stack
+    - Control de flujo: 
+        - Mutex: Bloquean el acceso, flag
+        - Atomic: Encapsulación de acceso único
+- **Process**  -> dependientes de OS y cada uno ofrece una API diferente para trabajar con ellos  
+No comparten memoria.  
+Cada uno tiene su propio stack y su propio heap
+
+
+###  Patrones e interfaces en c++ ###
+- **STL**  
+Librería estándar de C++ 
+Framework extensible para manejo de datos en programas C++ 
+La representación más genérica, más eficiente y  más flexible de conceptos (ideas, algoritmos)
+Ventajas: Estándar, Multiplataforma, Eficiencia
+Desventajas: Uso específico
+
+  -  Contenedores secuenciales (array, vector, lista, deque, stack, queue, ... )  
+  -  Contenedores asociativos (set, map, multimap, multiset)  
+  - Iteradores: punteros para acceder individualmente a los elementos de un contenedor. begin() end()  
+    
+   [Resumen STL](https://users.cs.northwestern.edu/~riesbeck/programming/c++/stl-summary.html)
+
+- **Interfaces**
+
+
+- **Patrones de diseño**
+
+
+
+- **Organización de código**

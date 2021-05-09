@@ -1,0 +1,87 @@
+PROGRAMACIÓN CONCURRENTE
+La programación concurrente es usada desde dos vertientes principales, 
+optimización y arquitectura. Al disponer de más recursos debería ser posible 
+hacer que nuestros programas sean mas eficientes. La arquitectura también está 
+relacionada con la eficiencia, pero no a nivel de cómputo o velocidad, si no a nivel de gestión.
+
+Desde 2011 C++ mantiene una librería estándar para trabajar con hilos (threads).
+Vamos a explorarla y ver como usarla para nuestros propósitos.
+
+- Threading
+Ejecución de código concurrente
+Los threads standard en c++ están encapsulados en la clase thread.
+
+#include <thread>
+void foo(){std::cout << “Hello thread!”;}
+Std::thread t(foo);
+
+Propiedades
+Hilos de ejecución lógicos
+Exprimen el rendimiento de multiprocesadores
+Comparten la misma memoria aunque tienen su propio stack -> Cuando el thread acaba esa memoria reservada es liberada o destruida
+Dos formas de trabajar con ellos
+	Esperando que terminen de ejecutar, join
+	Dándoles libertad y terminandolos con una señal, detach
+
+
+Control de flujo (acceso a la misma posición de memoria, comparten recursos)
+Mutex (mutual exclusion logs) --> Flag (lock)
+Gestión de recursos
+Bloquean el acceso, es como una señal.
+Muy útiles, de otra manera sería imposible gestionar 
+los datos mutables.
+
+Atomic
+Encapsulación de acceso único.
+Se asegura que cualquier operación no puede ser afectada por otra.
+Las operaciones se harán de una en una, no a la vez.
+
+
+https://en.cppreference.com/w/cpp/thread/thread
+http://www.cplusplus.com/reference/thread/thread
+https://en.cppreference.com/w/cpp/thread/mutex
+http://www.cplusplus.com/reference/mutex/mutex
+
+Procesos ligeros. Comparten memoria. 
+Todos viven en el entorno del proceso padre.
+
+- Process
+Los procesos son una parte importante para gestionar programas.
+Muchas veces queremos ejecutar otros programas y/o comunicarnos con ellos.
+
+No comparten memoria. No pueden accederse de unos a otros.
+Cada uno tiene su propio stack y su propio heap
+
+Ejecución de código concurrente
+Los procesos son dependientes de OS y cada uno ofrece una API 
+diferente para trabajar con ellos, aunque son muy similares.
+
+En linux existe la función fork(), que nos clona el proceso 
+en el punto de llamada.
+
+Propiedades
+Son procesos pesados (+ que thread)
+No comparten la memoria. 
+Se replica proceso padre en proceso hijo. Tb los THREADS, en el estado en el que estean.
+	Hay que comunicarlos expresamente (pipe)
+Es preferible usar threads a menos que sea completamente 
+necesarios los procesos.
+
+https://linux.die.net/man/2/fork
+https://linux.die.net/man/3/waitpid
+https://linux.die.net/man/3/popen
+https://linux.die.net/man/2/pipe
+
+
+Procesos vs Threads
+1. Los threads son procesos ligeros, más fáciles de crear 
+ya que no necesitan replicar el estado programa y consumen 
+menos recursos que los procesos.
+2. Threading exige tener más cuidado programando, ya que al 
+compartir la memoria los datos sólo deben ser modificados 
+por un thread al mismo tiempo
+4.  Los procesos son independientes, conservan su estado, 
+mientras que los threads al compartir los datos son 
+interdependientes de los otros threads
+5.  Un proceso puede contener threads. 
+Un thread puede levantar un proceso.

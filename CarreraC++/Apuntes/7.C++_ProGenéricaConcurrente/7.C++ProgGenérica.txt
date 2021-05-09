@@ -1,0 +1,68 @@
+PROGRAMACIÓN GENÉRICA 
+- Macros
+Gestionar código antes del proceso de compilación. Directivas de preprocesador.
+Sustitución de código por otro, precedente a la compilación del código.
+Usa 3 bloques:
+Instrucción (#define, #undef, #ifdef...) #include
+Nombre y declaración de argumentos
+Código de sustitución
+
+#define HELLO_WORLD “Hello world"	
+//cada vez que encuentre la etiqueta HELLO_WORLD el compilador la va a tratar como el string
+No son como variables. Genera un fichero temporal que toma para la compilación.
+
+Pueden ser usadas como funciones. 
+#define MY_REDEFINED_MACRO(the_variable) #the_variable -> la variable la podemos usar en el cuerpo de la macro
+
+Utils. Generadas automáticamente:   __DATE__, __TIME__, __FILE__, __LINE__
+
+Propiedades
+No se pueden sobrecargar
+Se pueden redefinir
+Tiene su propio “scope”
+
+Beneficios
+Ayudan a crear código específico o dependiente (p.ej. codif por SO).
+Ayudan a organizar el código (bien usado)
+
+Desventajas
+No se pueden depurar fácilmente!
+Muchas macros emborronan el código
+Hay formas mejores (templates, consts....)
+
+
+- Templates (plantillas)
+Generar código genérico no dependiente de tipos o valores.
+Si queremos hacer una clase contenedor que no sea dependiente del tipo que tengamos que usar dentro (pueda servir para distintos tipos)
+
+Generar/expandir código en tiempo de compilación.
+Usa una sintaxis especifica:
+	template
+	<argumentos del template> 		//alias, clases, funciones, operadores
+	Código
+	
+	template<class T>
+	void foo(T arg){return arg}
+
+Propiedades
+Se pueden componer parcialmente (podemos añadir != tipos de param a ellas -> alias)
+Se pueden especializar x tipo
+Se expanden en compilación
+Sólo son creadas/expandidas si son usadas
+
+Beneficios
+Muy reutilizables
+Esenciales en algunos casos (trabajar con tipos genéricos)
+
+Desventajas 
+La depuración es complicada
+Pueden llegar a generar código pesado
+
+
+DIFERENCIAS
+Macros -> Sustitución de código. 
+Templates -> Generación de código. Replica para un tipo. NO SUSTITUYE
+
+Para programación condicional -> MACROS
+Para cualquier otra cosa, TEMPLATES. + estables, + fáciles de leer (son declaradas en el sitio en el que las utilizamos)
+

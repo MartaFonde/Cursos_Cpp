@@ -19,27 +19,27 @@
 //    return 0;
 //}
 
-union U1
-{
-    int a;
-    int b;
-
-};
-
-union U2
-{
-    U1   u;
-    int  i;
-};
-
-int main() {
-    U1 u1{ 10 };
-    u1.a = 100;
-    u1.b = u1.a * 10;
-    U2 u2{ u1 };
-    u2.i /= 10;
-    std::cout << u2.i << ", " << u2.u.a << ", " << u2.u.b;
-}
+//union U1
+//{
+//    int a;
+//    int b;
+//
+//};
+//
+//union U2
+//{
+//    U1   u;
+//    int  i;
+//};
+//
+//int main() {
+//    U1 u1{ 10 };
+//    u1.a = 100;
+//    u1.b = u1.a * 10;
+//    U2 u2{ u1 };
+//    u2.i /= 10;
+//    std::cout << u2.i << ", " << u2.u.a << ", " << u2.u.b;
+//}
 //class Base1
 //{
 //public:

@@ -155,22 +155,40 @@
     <Image Include="3.SOLID_PatronesDisenho\Prototype.gif" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\basic_array_example.cpp" />
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\deque_example.cpp" />
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\list_example.cpp" />
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\main_STL.cpp" />
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\map_example.cpp" />
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\set_example.cpp" />
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\vector_example.cpp" />
     <ClCompile Include="bucles.cpp" />
     <ClCompile Include="ficheros.cpp" />
     <ClCompile Include="funciones.cpp" />
     <ClCompile Include="if_else.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainMacros.cpp" />
+    <ClCompile Include="mainProcess.cpp" />
+    <ClCompile Include="mainTemplates.cpp" />
+    <ClCompile Include="mainThreads.cpp" />
     <ClCompile Include="memoria.hpp" />
     <ClCompile Include="modificadores.cpp" />
     <ClCompile Include="otras_funcionalidades.cpp" />
     <ClCompile Include="pointer_function.cpp" />
+    <ClCompile Include="pruebas.cpp" />
     <ClCompile Include="tipos_size_parte1.cpp" />
     <ClCompile Include="tipos_size_parte2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\smart_pointer.hpp" />
+    <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\stl_examples.hpp" />
     <ClInclude Include="clases.hpp" />
     <ClInclude Include="estructuras.hpp" />
     <ClInclude Include="herencia.hpp" />
+    <ClInclude Include="macros.hpp" />
+    <ClInclude Include="listaEnlazadaGenerica_templates.hpp" />
+    <ClInclude Include="singleton_templates.hpp" />
+    <ClInclude Include="threads_workers.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
