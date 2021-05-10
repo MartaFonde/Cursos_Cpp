@@ -427,14 +427,17 @@ Operaciones: ++ / -- / += / ==
 
 **08/05/2021**  
 **Estructuras de datos**  
-Struct  
-Union  
-Enum Class  
+Struct  -> Empaquetado de datos. Pueden tener constructor, destructor y métodos. Por defecto todos los atributos son públicos.
+Union  -> Parecidos a los structs, pero sus atributos comparten el mismo espacio en memoria.  
+    Misma memoria pueda ser interpretado o permita el acceso como diversos tipos de datos.
+Enum Class  ->  = enum pero sin valor asociado a id. Sólo id. No se pueden realizar comparaciones con enteros.
 Class  
 
 **Herencia**  
-Vtables    
-Modificadores    
+Vtables -> tablas donde están almacenados los punteros a las funciones de las clases madres.
+            virtual => almacena puntero a funct en una tabla. 
+Modificadores   -> Override, protected, friend
+        friend:  (clases amigas con acceso a atributos private y protected)
 Polimorfismo  
 
 *** 
@@ -455,8 +458,8 @@ Prog. concurrente:
 No comparten memoria.  
 Cada uno tiene su propio stack y su propio heap
 
-
-###  Patrones e interfaces en c++ ###
+***
+### 8. Patrones e interfaces en c++ ###
 - **STL**  
 Librería estándar de C++ 
 Framework extensible para manejo de datos en programas C++ 
@@ -466,15 +469,56 @@ Desventajas: Uso específico
 
   -  Contenedores secuenciales (array, vector, lista, deque, stack, queue, ... )  
   -  Contenedores asociativos (set, map, multimap, multiset)  
-  - Iteradores: punteros para acceder individualmente a los elementos de un contenedor. begin() end()  
-    
+  -  Iteradores: punteros para acceder individualmente a los elementos de un contenedor. begin() end()  
+
+ **10/05/2021**
+
+  -  Smart pointers: punteros que, en el momento de su destrucción, eliminan, si es necesario, el objeto al que apuntan.
+       - unique_ptr: El objeto solo puede ser apuntado por él
+       - shared_ptr: El objeto apuntado puede ser apuntado por varios, cuando ninguno apunte se liberará la memoria.
+       - weak_ptr: El objeto tiene una conexión débil, es decir, si solo están apuntando weak_ptrs al objeto, el objeto se eliminará.
+       
    [Resumen STL](https://users.cs.northwestern.edu/~riesbeck/programming/c++/stl-summary.html)
-
+  - Librerías: Iostream, String, Contenedores, Fstream , Math, Chrono, Functional, Memory, ...
+   
 - **Interfaces**
+Una clase abstracta es aquella que tiene al menos uno de sus métodos virtuales como virtual puro:
+        
+        virtual void funcionVirtualPura () = 0;
 
+Obliga a las clases derivadas que lo implementen ó a hacerlo virtual puro (semiinterfaz)
+
+Formas de utilización:   
+Mixta: Aquellas que tienen algún método virtual puro ->  
+ Implementa código común para todas sus clases derivadas.  
+Habitual en componentes diseñados para ser incorporados 
+al código fuente del sistema.
+
+Pura (o interfaz): Todas sus funciones son virtuales puras. 
+Solo muestran la interfaz, no pueden tener ningún método 
+implementado ni ninguna variable que no sea constante. Puede haber 
+declaración de tipos.
+Creación de componentes totalmente desacoplados, 
+diseñados para ser utilizados en diferentes programas.
+
+Las puras no tienen ctor. 
+Las mixtas pueden hacer el constructor para que cuando se instancien las clases hijas llamen al constructor padre y hagan cosas comunes. 
 
 - **Patrones de diseño**
+    - Creacionales 
+        - Singleton es un patrón que dice que un objeto solo puede tener una instancia en la ejecución.
+        - Factory method es un patrón que permite crear instancias de multiples clases derivadas usando la misma interfaz.  
+     [Source Making_creational patterns](https://sourcemaking.com/design_patterns/creational_patterns)
 
+    - Estructurales
+        - Composite command  es una estructura de árbol de objetos simples y compuestos. Composición recursiva
+        - Decorator es un patrón de diseño que añade responsabilidades dinámicamente a un objeto  
+     [Source Making_structural patterns](https://sourcemaking.com/design_patterns/structural_patterns)
 
+    - Comportamiento    
+        - Observer es un patrón que permite notificar cambios de un objeto a otras entidades.
+        - Memento permite guardar el estado de un objeto y volver a restaurarlo en otro momento.  
+       [Source Making_behavioral patterns](https://sourcemaking.com/design_patterns/behavioral_patterns)
 
-- **Organización de código**
+- **Organización de código**  
+Ejemplo juego tipo CandyCrush

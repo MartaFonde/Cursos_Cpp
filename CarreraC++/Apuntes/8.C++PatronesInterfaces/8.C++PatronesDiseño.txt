@@ -1,0 +1,69 @@
+Para qué sirven 
+Soluciones para problemas comunes en el diseño de software. 
+
+No es un diseño final, aunque puede ser una transformación directa 
+al código. 
+ADAPTAR PATRÓN A NUESTRO PROBLEMA, NO AL REVÉS 
+
+Puedes combinar diferentes patrones para tu problema. 
+
+Descripción o plantilla de como resolver un problema que 
+puede ser usada en diferentes situaciones.
+
+
+Tipos 
+Creacionales -> Instanciación de clases. Construcción del obj
+Estructurales -> Composición de clases y objetos 
+Comportamiento -> Comunicación entre clases y objetos
+
+- CREACIONALES
+Son patrones de diseño que trabajan con el mecanismo de creación de los objetos.
+
+https://sourcemaking.com/design_patterns/creational_patterns
+
+Singleton es un patrón que dice que un objeto solo puede tener una instancia en la ejecución.
+Se debe decidir de usar cuando cumple los siguientes requisitos: 
+	El dueño de la instancia no puede ser razonablemente asignado. 
+	Es deseable una inicialización perezosa(lazy initialization) 
+	No se puede acceder de otra forma globalmente. 
+	
+Ventaja con respecto a variables globales 
+	Sabes el número de instancias 
+	Puedes cambiar y manejar un número diferente de ellas.
+
+Factory method es un patrón que permite crear instancias de multiples clases derivadas usando la misma interfaz.
+Define una interfaz para la creación de un objeto, 
+pero son las subclases las que deciden cual crear. 
+El operador new se considera dañino. (pq se tiene q crear a él mismo)
+	El operador new siempre crea un objeto y falla en la encapsulación 
+	de la creación del objeto. 
+	Este patrón fuerza la encapsulación y permite la petición de un 
+	objeto sin necesitar hacer el acto de creación. 
+Parecido a abstract factory.
+
+- ESTRUCTURALES
+Son patrones de diseño que buscan encontrar simples formas de relaciones entre entidades.
+https://sourcemaking.com/design_patterns/structural_patterns
+
+Composite es una estructura de árbol de objetos simples y compuestos.
+Composición recursiva.
+
+Decorator es un patrón de diseño que añade responsabilidades dinámicamente a un objeto
+Añadir responsabilidades adicionales a un objeto dinámicamente. 
+Alternativa flexible a creación de subclases. 
+Gran cantidad de objetos pequeños.
+
+
+- COMPORTAMIENTO
+Son patrones de diseño que se basan en simplificar las comunicaciones entre objetos.
+https://sourcemaking.com/design_patterns/behavioral_patterns
+
+Observer es un patrón que permite notificar cambios de un objeto a otras entidades.
+Define dependencias uno a muchos. 
+Cuando un objeto cambia su estado, notifica a todos sus dependencias. 
+Es la vista en el modelo vista-controlador. 
+
+Memento permite guardar el estado de un objeto y volver a restaurarlo en otro momento.
+Necesidad de restauración de estados previos dinámicamente. 
+Almacenar el estado sin violar la encapsulación. 
+Restaurar el estado guardado.

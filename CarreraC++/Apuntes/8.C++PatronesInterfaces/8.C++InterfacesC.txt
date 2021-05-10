@@ -1,0 +1,37 @@
+Las interfaces son herramientas de diseño que nos permiten crear 
+una representación de una clase u objeto para que, aunque la 
+implementación cambie, el cliente siempre pueda utilizar las mismas 
+funciones.
+
+interfaces o clases abstractas en C++.
+
+Se llaman clases abstractas porque no pueden instanciarse directamente, 
+ya que no todos sus métodos están definidos.
+
+- Definida en todas las clases derivadas 
+- Una clase abstracta es aquella que tiene al menos uno 
+de sus métodos virtuales como virtual puro 
+- De una clase abstracta no se pueden crear instancias.  
+Puedes tener un puntero de tipo interfaz, pero no new
+
+- Formas de utilización: 
+ 
+Mixta: 
+- Aquellas que tienen algún método virtual puro (no todos) ->
+- Implementa código común para todas sus clases derivadas.
+ Sirven para crear una interfaz e implementación común 
+	a todos sus hijos.
+-Habitual en componentes diseñados para ser incorporados 
+al código fuente del sistema.
+
+Pura (o interfaz): 
+- Todas sus funciones son virtuales puras. 
+- Solo muestran la interfaz, no pueden tener ningún método 
+implementado ni ninguna variable que no sea constante. 
+- Puede haber declaración de tipos.
+- Creación de componentes totalmente desacoplados, 
+diseñados para ser utilizados en diferentes programas.
+
+Las puras no tienen ctor. 
+Las mixtas pueden hacer el constructor para que cuando se instancien las clases hijas llamen al constructor padre y hagan cosas comunes. 
+

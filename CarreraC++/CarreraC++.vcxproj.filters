@@ -114,6 +114,9 @@
     <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\vector_example.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-interfaces\interfaces\main_interfaces.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="estructuras.hpp">
@@ -141,6 +144,18 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\stl_examples.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-interfaces\interfaces\Action.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-interfaces\interfaces\ActionCallable.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-interfaces\interfaces\Solver.hpp">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-interfaces\interfaces\SolverExample.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

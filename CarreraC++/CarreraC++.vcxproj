@@ -155,6 +155,7 @@
     <Image Include="3.SOLID_PatronesDisenho\Prototype.gif" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-interfaces\interfaces\main_interfaces.cpp" />
     <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\basic_array_example.cpp" />
     <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\deque_example.cpp" />
     <ClCompile Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\list_example.cpp" />
@@ -180,6 +181,10 @@
     <ClCompile Include="tipos_size_parte2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-interfaces\interfaces\Action.hpp" />
+    <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-interfaces\interfaces\ActionCallable.hpp" />
+    <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-interfaces\interfaces\Solver.hpp" />
+    <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-interfaces\interfaces\SolverExample.h" />
     <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\smart_pointer.hpp" />
     <ClInclude Include="..\..\..\..\Downloads\openwebinars_cpp_patrones-stl\openwebinars_cpp_patrones-stl\openwebinars\stl_examples.hpp" />
     <ClInclude Include="clases.hpp" />

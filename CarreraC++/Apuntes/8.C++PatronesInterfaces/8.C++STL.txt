@@ -76,5 +76,35 @@ std::vector<int>::iterator it;
 Ver cpp vector y map
 
 - SMART POINTERS
+Los punteros inteligentes son aquellos que añaden una funcionalidad 
+para que en el momento de su destrucción, eliminen, si es necesario, 
+el objeto al que apuntan.
+
+Los tipos básicos en C++14 son:
+    unique_ptr: El objeto Sólo puede ser apuntado por él. Muy usado en patrón singleton
+    Shared_ptr: El objeto apuntado puede ser apuntado por varios, cuando ninguno apunte se liberará la memoria.
+    weak_ptr: El objeto tiene una conexión débil, es decir, si solo están apuntando weak_ptrs al objeto, el objeto se eliminará.
+	
+No requieren un Garbage Collection  (Java, C#, ..)
+Nos permite abstracción gestión de memoria.
+
+scope: https://www.youtube.com/watch?v=TaIpBpqwT3k
+namespaces: https://www.youtube.com/watch?v=QqlrQhaJGd4
 
 - LIBRERÍAS
+
+    iostream: entrada y salida
+    fstream: ficheros
+    memory: smart pointers
+    functional: punteros a funciones
+    string: tipo de dato
+    vector: container
+    list: container
+    deque: container
+    map: container
+    set: container
+    algorithm: funciones para ser usadas con un rango de elementos
+    chrono: Utilidades de tiempo.
+
+Cabeceras C++ -> https://en.cppreference.com/w/cpp/header
+Cómo usar la libreria chrono para gestionar el tiempo en C++ -> https://www.youtube.com/watch?v=hlC1H8U0WXk
